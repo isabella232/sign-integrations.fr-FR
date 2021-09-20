@@ -12,7 +12,7 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: beafe6c0-262f-4f5b-9315-a023a4eef4a2
-source-git-commit: ba5e0fccfdb7cd278cc0ae57dc03da1e17b51577
+source-git-commit: 78d6cafa720b41bd638c2ef723b2d4a2def19cd5
 workflow-type: tm+mt
 source-wordcount: '998'
 ht-degree: 33%
@@ -163,6 +163,6 @@ Pour obtenir une assistance, les utilisateurs Adobe Sign doivent contacter leur
 
 * [Ajout de balises de texte Adobe sur des documents](https://adobe.com/go/adobesign_text_tag_guide)
 
-* [Configuration et exemples de la fonctionnalité de révision de document](https://www.adobe.com/go/adobesign_workday_quick_start)
+* [Configuration et exemples de la fonctionnalité de révision de document](https://www.adobe.com//go/adobesign_workday_quick_start)
 
 [**Contacter le support technique Adobe Sign**](https://adobe.com/go/adobesign-support-center_fr)

@@ -12,7 +12,7 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 8f12b524-2123-45d4-98d5-b2b23580a5ea
-source-git-commit: ba5e0fccfdb7cd278cc0ae57dc03da1e17b51577
+source-git-commit: 78d6cafa720b41bd638c2ef723b2d4a2def19cd5
 workflow-type: tm+mt
 source-wordcount: '1133'
 ht-degree: 23%
@@ -170,7 +170,7 @@ En tant que partenaire de l’intégration, Adobe Sign doit être contacté lor
 Pour obtenir une assistance, les utilisateurs Adobe Sign doivent contacter leur responsable du succès client. Vous pouvez également contacter le support technique au 1-866-318-4100. Patientez jusqu’à l’annonce de la liste des produits, puis saisissez 4, puis 2 (lorsque vous y êtes invité).
 
 * [Ajout de balises de texte d’Adobe aux documents](https://adobe.com/go/adobesign_text_tag_guide)
-* [Vérification de la configuration des documents et exemples](https://www.adobe.com/go/adobesign_workday_quick_start)
+* [Vérification de la configuration des documents et exemples](https://www.adobe.com//go/adobesign_workday_quick_start)
 
 ## Questions courantes {#faq}
 
