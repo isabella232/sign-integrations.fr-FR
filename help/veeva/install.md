@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 63a34c2d77ba7a262670da624c86a3730de0fdc5
+source-git-commit: d8b7271cae9bcbe8b66311eba0317b8937ea855c
 workflow-type: tm+mt
-source-wordcount: '2772'
+source-wordcount: '2839'
 ht-degree: 2%
 
 ---
@@ -24,6 +24,16 @@ ht-degree: 2%
 ## Présentation {#overview}
 
 Ce document explique comment établir l&#39;intégration d&#39;Adobe Sign avec la plateforme [!DNL Veeva Vault]. [!DNL Veeva Vault] est une plate-forme de gestion de contenu d’entreprise (ECM) conçue pour les sciences de la vie. Un &quot;coffre-fort&quot; est un référentiel de contenu et de données qui sert habituellement aux dépôts réglementaires, aux rapports de recherche, aux demandes de subventions, aux contrats généraux, et bien plus encore. Une seule entreprise peut avoir plusieurs &quot;coffres-forts&quot; qui doivent être entretenus séparément.
+
+Les étapes de haut niveau permettant de terminer l’intégration sont les suivantes :
+
+* Activer votre compte d’administration dans Adobe Sign (nouveaux clients uniquement)
+* Créez des objets pour suivre l’historique d’un cycle de vie d’accord dans Vault.
+* Créez un profil de sécurité.
+* Configurez un groupe dans Adobe Sign pour héberger l&#39;utilisateur d&#39;intégration [!DNL Veeva Vault].
+* Créez des champs et des rendus de document.
+* Configurez les actions Web et mettez à jour le cycle de vie du document.
+* Créez la configuration des rôles utilisateur et utilisateur de type de document.
 
 ## Configurer [!DNL Veeva Vault]
 
