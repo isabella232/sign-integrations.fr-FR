@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 3f826e88969562a69279a29dfdd98775ec01fd51
+source-git-commit: c25be043b404e9bf7a90496d4e47c1f22069313d
 workflow-type: tm+mt
-source-wordcount: '3061'
+source-wordcount: '3043'
 ht-degree: 2%
 
 ---
@@ -122,7 +122,7 @@ Pour une intégration réussie du coffre-fort, un nouveau profil de sécurité a
 
 ![Image des détails de l’événement de signature](images/security-profiles.png)
 
-Tous les profils de sécurité des utilisateurs qui ont besoin d’un accès à l’historique Adobe Sign dans Vault doivent disposer d’une autorisation en lecture pour les objets d’événement de signature, de signature et de signature.
+Les profils de sécurité des utilisateurs qui ont besoin d’un accès à l’historique Adobe Sign dans Vault doivent disposer d’autorisations en lecture pour les objets Signature, Signatory et Signature Event.
 
 ![Image des détails de l’événement de signature](images/set-permissions.png)
 
@@ -214,7 +214,7 @@ Le cycle de vie des accords Adobe Sign contient les états suivants :
 * ANNULÉE
 * EXPIRÉ
 
-Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondre à celui dans lequel l’accord est. Pour ce faire, ajoutez les états suivants à chaque cycle de vie utilisé par les documents éligibles à la signature d’Adobe :
+Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondre à celui dans lequel l’accord est. Pour ce faire, ajoutez les états suivants dans chaque cycle de vie utilisé par les documents éligibles à la signature d’Adobe :
 
 * **Avant la signature**  de l’Adobe (révisée) : Il s’agit d’un nom d’espace réservé pour l’état à partir duquel le document peut être envoyé à Adobe Sign. En fonction du type de document, il peut s’agir de l’état Brouillon ou Révisé. Le libellé d’état du document peut être personnalisé en fonction des besoins du client. Avant l’état de signature de l’Adobe, vous devez définir les deux actions suivantes de l’utilisateur :
 
@@ -229,7 +229,7 @@ Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondr
    * Action qui modifie l’état du document en *état de signature en Adobe*. Le nom de cette action utilisateur doit être le même pour tous les types de document pour tout cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui transforme l’état du document en *état Adobe Sign annulé*. Le nom de cette action utilisateur doit être le même pour tous les types de document pour tout cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui appelle l’action Web &quot;Adobe Sign&quot; .
-   * Action qui appelle l’action Web &quot;Annuler Adobe Sign&quot;. Cet état doit avoir une sécurité qui permettra au rôle Administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
+   * Action qui appelle l’action Web &quot;Annuler Adobe Sign&quot;. Cet état doit avoir une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
 
    ![Image de l&#39;état du cycle de vie 2](images/lifecycle-state2.png)
 
@@ -238,7 +238,7 @@ Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondr
    * Action qui modifie l’état du document en état d’Adobe Sign Annulé. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit le cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui modifie l’état du document en état de signature en Adobe. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit le cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui appelle l’action Web &quot;Adobe Sign&quot;
-   * Action qui appelle l’action Web &quot;Annuler Adobe Sign&quot;. Cet état doit avoir une sécurité qui permettra au rôle Administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
+   * Action qui appelle l’action Web &quot;Annuler Adobe Sign&quot;. Cet état doit avoir une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
 
    ![Image de l&#39;état du cycle de vie 3](images/lifecycle-state3.png)
 
@@ -248,7 +248,7 @@ Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondr
    * Action qui modifie l’état du document en état d’éjection Adobe Sign. L’état cible de cette action peut être n’importe quelle exigence du client et peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit le cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui transforme l’état du document en état de signature d’Adobe. L’état cible de cette action peut être n’importe quelle exigence du client et peut être différent pour différents types. Toutefois, le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit le cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui appelle l&#39;action Web *Adobe Sign*.
-   * Action qui appelle l&#39;action Web *Annuler Adobe Sign*. Cet état doit avoir une sécurité qui permettra au rôle Administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
+   * Action qui appelle l&#39;action Web *Annuler Adobe Sign*. Cet état doit avoir une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
 
    ![Image de l&#39;état du cycle de vie 4](images/lifecycle-state4.png)
 
@@ -263,7 +263,7 @@ Le diagramme suivant illustre les mappages entre les états d’accord Adobe Sig
 
 ### Créer un groupe de types de document {#create-document-type-group}
 
-Les administrateurs doivent créer un nouvel enregistrement de groupe de types de document appelé &quot;Document Adobe Sign&quot;. Ce groupe de types de document est ajouté pour toutes les classifications de documents éligibles au processus Adobe Sign. Étant donné que la propriété de groupe de type de document n’est pas héritée du type au sous-type ou du sous-type au niveau de classification, elle doit être définie pour la classification de chaque document qui est éligible pour Adobe Sign.
+Les administrateurs doivent créer un nouvel enregistrement de groupe de types de document appelé &quot;Document Adobe Sign&quot;. Ce groupe de types de document est ajouté pour toutes les classifications de documents éligibles au processus Adobe Sign. Étant donné que la propriété de groupe de type de document n’est pas héritée du type au sous-type ni du sous-type au niveau de classification, elle doit être définie pour la classification de chaque document qui est éligible pour Adobe Sign.
 
 ![Image de type de document](images/document-type.png)
 
@@ -294,7 +294,7 @@ Un administrateur de compte Adobe Sign doit suivre les étapes ci-dessous pour c
 
    ![Image](images/middleware-signin.png)
 
-   Une fois l’utilisateur connecté, la page affiche l’ID d’e-mail associé dans le coin supérieur droit et un onglet Paramètres supplémentaire, comme illustré ci-dessous.
+   Une fois la connexion établie, la page affiche l’ID d’adresse électronique associé et un onglet Paramètres, comme illustré ci-dessous.
 
    ![Image](images/middleware_settings.png)
 

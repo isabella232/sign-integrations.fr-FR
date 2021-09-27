@@ -12,10 +12,10 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: beafe6c0-262f-4f5b-9315-a023a4eef4a2
-source-git-commit: 3f826e88969562a69279a29dfdd98775ec01fd51
+source-git-commit: c25be043b404e9bf7a90496d4e47c1f22069313d
 workflow-type: tm+mt
-source-wordcount: '1000'
-ht-degree: 33%
+source-wordcount: '995'
+ht-degree: 32%
 
 ---
 
@@ -39,7 +39,7 @@ La procédure avancée permettant d’effectuer l’intégration comprend :
 
 ## Activation de votre compte d’évaluation Adobe Sign {#activate-sign-trial-account}
 
-Pour demander une version d&#39;essai de 30 jours d&#39;Adobe Sign, vous devez remplir ce [formulaire d&#39;inscription](https://land.echosign.com/esign-trial-workday-registration.html).
+Pour demander une évaluation de 30 jours d&#39;Adobe Sign, vous devez remplir ce [formulaire d&#39;inscription](https://land.echosign.com/esign-trial-workday-registration.html).
 
 **Remarque** : Nous vous recommandons vivement d’utiliser une adresse e-mail fonctionnelle valide pour créer la version d’évaluation et non un courrier électronique temporaire. Vous devez accéder à cet e-mail pour vérifier le compte. L’adresse doit donc être valide.
 
@@ -49,7 +49,7 @@ Dans un délai d&#39;un jour ouvrable, un spécialiste Adobe Sign de l&#39;inté
 
 ![E-mail de bienvenue de l’équipe Adobe Sign](images/welcome-email-2020.png)
 
-Suivez les instructions de l’e-mail pour initialiser votre compte et accéder à votre page d’accueil [!UICONTROL Adobe Sign ].
+Pour initialiser votre compte et accéder à votre [!UICONTROL page d’accueil] Adobe Sign, suivez les instructions de l’e-mail .
 
 ![Tableau de bord Adobe Sign](images/classic-home.png)
 
@@ -165,4 +165,4 @@ Pour obtenir une assistance, les utilisateurs Adobe Sign doivent contacter leur
 
 * [Configuration du document de révision et exemples](https://www.adobe.com//go/adobesign_workday_quick_start){target=&quot;_blank&quot;}
 
-[**Contacter le support technique Adobe Sign**](https://adobe.com/go/adobesign-support-center_fr)
+[**Contacter le support technique Adobe Sign**](https://www.adobe.com/go/adobesign-support-center)
