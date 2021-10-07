@@ -7,9 +7,9 @@ type: Documentation
 solution: Adobe Sign
 role: User, Developer
 topic: Integrations
-source-git-commit: 27610773d47a947dbfa1deb3f594667406a9aefb
+source-git-commit: 40fe3649aab0499ce8e5fbd1b11308ffbd759a44
 workflow-type: tm+mt
-source-wordcount: '2336'
+source-wordcount: '2354'
 ht-degree: 2%
 
 ---
@@ -247,6 +247,10 @@ Remarque : Si un accord [!DNL EchoSign] est envoyé pour signature et que l’en
 Le sous-panneau [!UICONTROL Événements] d’un [!DNL EchoSign] accord suit l’état des accords envoyés pour signature. Pour afficher les dernières mises à jour d’un [!DNL EchoSign] accord, sélectionnez **[!UICONTROL Mettre à jour l’état]**. Le bouton [!UICONTROL Mettre à jour l’état] n’est disponible qu’après l’envoi d’un accord pour signature.
 
 ![Image](images/update-cancel-status.png)
+
+Une fois qu’un accord est envoyé pour signature, sélectionnez **[!UICONTROL Mettre à jour l’état]** pour récupérer le dernier état.
+
+![Image](images/events-subpanel.png)
 
 ### Envoi de rappels {#send-reminders}
 
