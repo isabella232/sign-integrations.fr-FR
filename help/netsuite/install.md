@@ -1,19 +1,19 @@
 ---
 title: Adobe Sign for [!DNL NetSuite] - Guide d’installation et de personnalisation (v4.0.4)
-description: 'Adobe Sign for [!DNL NetSuite] - Guide d''installation et de personnalisation '
+description: Adobe Sign for [!DNL NetSuite] - Guide d'installation et de personnalisation
 product: Adobe Sign
 locnotes: All languages; screenshots for Tier 1 and 2 only (see the currently published localized page for guidance)
 type: Documentation
 solution: Adobe Sign
 role: User, Developer
 topic: Integrations
-source-git-commit: 27610773d47a947dbfa1deb3f594667406a9aefb
+exl-id: 378cac01-87c9-4288-8839-482121d49402
+source-git-commit: f8d0bc748872e675dc1c638eb4050efe9e3147ef
 workflow-type: tm+mt
 source-wordcount: '4870'
 ht-degree: 35%
 
 ---
-
 
 # [!DNL NetSuite] Guide d’installation et de personnalisation (v4.0.4) {#install-customize-NetSuite}
 
@@ -31,7 +31,7 @@ Pour plus d&#39;informations sur le test, voir [Création d&#39;un accord Adobe 
 
 >[!CAUTION]
 >
->Customers upgrading to v4.0.4 should NOT remove their existing API key.
+>Les clients effectuant une mise à niveau vers la version 4.0.4 NE DOIVENT PAS supprimer leur clé d’API existante.
 >
 >Pour plus d&#39;informations sur l&#39;utilisation de la clé d&#39;API, voir [Définition des préférences personnalisées](#configure).
 
@@ -204,11 +204,11 @@ Vous pouvez utiliser des préférences personnalisées pour spécifier la façon
 
    ![Préférences personnalisées](images/custom-preferences.png)
 
-1. Enable and configure your Adobe Sign preferences as needed:
+1. Activez et configurez vos préférences Adobe Sign selon vos besoins :
 
    * **Entrez la clé d’API EchoSign pour votre compte** : N’ajoutez ou ne modifiez aucune valeur dans ce champ.
    * **Utiliser le contact d’enregistrement parent comme signataire** : Si cette option est activée, le contact de l’enregistrement parent est le premier signataire par défaut lors de la création des accords. L’expéditeur peut facilement supprimer ou modifier le signataire par défaut ou ajouter des signataires supplémentaires à l’accord avant l’envoi.
-   * **Utiliser le contact de transaction Contact as Signer if present**: This preference is valid only if the *Use Parent Record Contact as Signer* preference is also enabled. Si cette option est activée, lors de la génération d’un accord à partir d’un enregistrement de transaction (par exemple, Devis), le contact de transaction principal est le premier signataire par défaut. Pour plus d’informations, voir[ Enregistrements de transaction. ](#transrecords) S’il n’existe aucun contact de transaction principal ou s’il s’agit d’un envoi à partir d’un enregistrement d’objet [!DNL NetSuite] (par exemple, un enregistrement de client, un enregistrement de partenaire), le destinataire par défaut est le contact principal de l’adresse électronique du client. L’expéditeur peut facilement supprimer ou modifier le signataire par défaut ou ajouter des signataires supplémentaires à l’accord avant l’envoi.
+   * **Utiliser le contact de transaction Contactez en tant que signataire s’il est présent** : Cette préférence n’est valide que si la préférence *Utiliser le contact d’enregistrement parent comme signataire* est également activée. Si cette option est activée, lors de la génération d’un accord à partir d’un enregistrement de transaction (par exemple, Devis), le contact de transaction principal est le premier signataire par défaut. Pour plus d’informations, voir[ Enregistrements de transaction. ](#transrecords) S’il n’existe aucun contact de transaction principal ou s’il s’agit d’un envoi à partir d’un enregistrement d’objet [!DNL NetSuite] (par exemple, un enregistrement de client, un enregistrement de partenaire), le destinataire par défaut est le contact principal de l’adresse électronique du client. L’expéditeur peut facilement supprimer ou modifier le signataire par défaut ou ajouter des signataires supplémentaires à l’accord avant l’envoi.
    * **Autoriser le marquage des destinataires en tant qu’approbateurs** : Si cette option est activée, les expéditeurs peuvent marquer les destinataires comme des approbateurs. Les destinataires marqués comme approbateurs peuvent réviser et approuver les accords, mais ils ne sont pas tenus de les signer. Les approbateurs peuvent être tenus de saisir des données dans les champs pendant le processus d’approbation.
    * **ID** du dossier de l’accord préféré : Permet de spécifier le dossier dans lequel sont stockés les accords signés définitifs. Si vous ne définissez pas de valeur pour ce champ, les accords signés finaux sont enregistrés par défaut dans le même dossier que le fichier du document d’origine. L’ID de dossier doit être un nombre.
    * **PDF** de transactions de pièce jointe automatique : Si cette option est activée, les PDF de transaction sont automatiquement joints aux accords lorsque de nouveaux accords sont créés à partir d’enregistrements de transaction.
@@ -257,7 +257,7 @@ L’onglet Accord peut apparaître avec deux types d’enregistrements [!DNL Net
 
 ## Enregistrements de transactions {#transrecords}
 
-If the agreement is created from a Transaction record, the first document on the agreement record is the PDF version of the record it came from and the first recipient is the email address of the record. Si vous ne souhaitez pas que le premier document soit une version PDF de l’enregistrement d’où il provient, accédez à **[!UICONTROL Configuration > Société > Préférences générales > sous-onglet Préférences personnalisées]** et désactivez l’option **[!UICONTROL PDF de transactions de pièce jointe automatique]**. Pour plus d&#39;informations, voir [Définition des préférences personnalisées](#configure).
+Si l’accord est créé à partir d’un enregistrement de transaction, le premier document de l’enregistrement de l’accord est la version PDF de l’enregistrement d’où il provient et le premier destinataire est l’adresse électronique de l’enregistrement. Si vous ne souhaitez pas que le premier document soit une version PDF de l’enregistrement d’où il provient, accédez à **[!UICONTROL Configuration > Société > Préférences générales > sous-onglet Préférences personnalisées]** et désactivez l’option **[!UICONTROL PDF de transactions de pièce jointe automatique]**. Pour plus d&#39;informations, voir [Définition des préférences personnalisées](#configure).
 
 Sous Préférences personnalisées, vous pouvez également activer la préférence **[!UICONTROL Utiliser le contact de transaction comme premier signataire]** si vous souhaitez que le contact de transaction principal soit automatiquement ajouté en tant que premier signataire. Lorsqu’il est associé à un enregistrement de transaction, il affiche les boutons **[!UICONTROL Accords]** et **[!UICONTROL Send for Signature]**.
 
@@ -289,7 +289,7 @@ Pour déployer le sous-onglet *Accords* et le bouton *Send for Signature* pour l
 
    * Pour ajouter l’onglet *Accords*, sélectionnez le script **[!UICONTROL Chargeur d’accords Adobe Sign]**.
 
-1. On the Script page, select **[!UICONTROL Deploy Script]**.
+1. Sur la page Script, sélectionnez **[!UICONTROL Déployer le script]**.
 
    ![Déploiement du script](images/deploly-script.png)
 
@@ -359,7 +359,7 @@ La plupart des rôles [!DNL NetSuite] doivent être autorisés à utiliser Adobe
 
    1. Sélectionnez le rôle dans la liste *Rôle*.
    1. Définissez *Niveau* sur **[!UICONTROL Complet]**.
-   1. Set *Default Form* to **[!UICONTROL Custom EchoSign Agreement Form]**.
+   1. Définissez *Formulaire par défaut* sur **[!UICONTROL Formulaire d’accord EchoSign personnalisé]**.
    1. Cochez la case **[!UICONTROL Restreindre le formulaire]**.
    1. Sélectionnez **[!UICONTROL Ajouter]** pour enregistrer les modifications pour la ligne de rôle.
 
@@ -416,7 +416,7 @@ Le bouton *[!UICONTROL Send for Signature]* est automatiquement activé **o[!UIC
 
    ![sélectionnez le sous-onglet Déploiements.](images/click-the-deploymentssub-tab.png)
 
-   * select the **[!UICONTROL Edit]** button on the *Script Deployment* page
+   * sélectionnez le bouton **[!UICONTROL Modifier]** sur la page *Déploiement de script*.
 
    ![Modification du déploiement de script](images/edit-script-deployment.png)
 
@@ -485,8 +485,8 @@ Après avoir installé une nouvelle offre groupée dans un compte Sandbox ou de 
    * **Mot de passe/Confirmer le mot de passe**  : si l’option  *Mot de passe requis pour afficher le* fichier PDF est activée, entrez le mot de passe qui doit être utilisé pour afficher l’accord.
    * **Rappeler aux destinataires de signer**  : indiquez si et à quelle fréquence des rappels sont envoyés aux destinataires. Les options disponibles sont *Jamais*, *Quotidien* ou *Hebdomadaire*.
    * **Langue :** spécifiez la langue dans laquelle la page de signature et les notifications par courrier électronique sont affichées aux destinataires.
-   * **Host Signing for the First Signer** — Enable this option to allow the sender host in-person signing for the first signer.
-   * **Days Until Signing Deadline** — Enter a whole number to indicate the signing deadline for the agreement (Today’s date + number of days).
+   * **Héberger la signature pour le premier signataire**  : activez cette option pour permettre à l’hôte expéditeur de signer en personne pour le premier signataire.
+   * **Jours avant l’échéance**  de signature : entrez un nombre entier pour indiquer l’échéance de signature de l’accord (date du jour + nombre de jours).
    * **Enregistrement**  parent : si vous le souhaitez, sélectionnez un enregistrement parent pour le lier à l’accord.
 
    ![Configuration de l’accord](images/configure-agreement-2.png)
@@ -501,7 +501,7 @@ Après avoir installé une nouvelle offre groupée dans un compte Sandbox ou de 
 
    Vous pouvez ajouter plusieurs documents à un accord.
 
-1. Select **[!UICONTROL Recipients]** sub-tab and specify recipient by either selecting from the contact list or typing an email address.
+1. Sélectionnez le sous-onglet **[!UICONTROL Destinataires]** et spécifiez le destinataire en le sélectionnant dans la liste des contacts ou en saisissant une adresse électronique.
 
    ![Ajouter des destinataires](images/add-recipients.png)
 
