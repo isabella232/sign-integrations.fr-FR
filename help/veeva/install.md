@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: a262c45fa21bf5d7d0536588d2a621c50d1e8fa0
+source-git-commit: b6925abdeb7912ae17161663a86637d9913de1ec
 workflow-type: tm+mt
-source-wordcount: '3090'
+source-wordcount: '3089'
 ht-degree: 2%
 
 ---
