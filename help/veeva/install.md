@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: d8071d9aa23351e31a9360d3c4d17f6297d0e2f1
+source-git-commit: 45bc2d698396bb07c4a246930d34b7e2ad0f6648
 workflow-type: tm+mt
-source-wordcount: '3115'
+source-wordcount: '3113'
 ht-degree: 2%
 
 ---
@@ -41,7 +41,7 @@ Les étapes de haut niveau permettant de terminer l’intégration sont les suiv
 
 ## Configurer [!DNL Veeva Vault]
 
-Pour configurer [!DNL Veeva Vault] pour l&#39;intégration avec Adobe Sign, nous créons certains objets qui aident à suivre l&#39;historique du cycle de vie d&#39;un accord dans Vault. Les administrateurs doivent créer les objets suivants :
+Pour configurer [!DNL Veeva Vault] pour l&#39;intégration avec Adobe Sign, créez certains objets qui permettent de suivre l&#39;historique du cycle de vie d&#39;un accord dans Vault. Les administrateurs doivent créer les objets suivants :
 
 * Signature
 * Signataire
@@ -57,7 +57,7 @@ L’objet de signature est créé pour stocker les informations relatives aux ac
 | Champ | Libellé | Type | Description |
 | --- | --- | ---| --- | 
 | external_id__c | ID de l’accord | Chaîne (100) | Contient l’ID d’accord unique de l’Adobe Sign |
-| file_hash__c | Hachage de fichier | Chaîne (50) | Contient la somme de chaîne md5 du fichier qui a été envoyé à Adobe Sign |
+| file_hash__c | Hachage de fichier | Chaîne (50) | Contient la somme de contrôle md5 du fichier qui a été envoyé à Adobe Sign |
 | name__v | Nom | Chaîne (128) | Contient le nom de l’accord |
 | sender__c | Expéditeur | Objet (Utilisateur) | Contient la référence à l’utilisateur Vault qui a créé l’accord. |
 | signature_status__c | État de signature | Chaîne (75) | Contient le statut de l’accord dans Adobe Sign |
@@ -122,7 +122,7 @@ Pour une intégration réussie du coffre-fort, un nouveau profil de sécurité a
 
 ![Image des détails de l’événement de signature](images/security-profiles.png)
 
-Les profils de sécurité des utilisateurs qui ont besoin d’un accès à l’historique Adobe Sign dans Vault doivent disposer d’autorisations en lecture pour les objets Signature, Signatory et Signature Event.
+Les profils de sécurité des utilisateurs qui ont besoin d’accéder à l’historique Adobe Sign dans Vault doivent disposer d’autorisations en lecture pour les objets Signature, Signatory et Signature Event.
 
 ![Image des détails de l’événement de signature](images/set-permissions.png)
 
@@ -223,7 +223,7 @@ Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondr
 
    ![Image de l&#39;état du cycle de vie 1](images/lifecycle-state1.png)
 
-* **Dans Adobe Sign Draft** : Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est déjà téléchargé vers Adobe Sign et que son accord est dans un état BROUILLON. C&#39;est un état obligatoire. Cet état doit refuser les cinq actions utilisateur suivantes :
+* **Dans Adobe Sign Draft** : Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est déjà téléchargé vers Adobe Sign et que son accord est dans un état BROUILLON. C&#39;est un état obligatoire. Cet état doit définir les cinq actions utilisateur suivantes :
 
    * Action qui transforme l’état du document en *état de création dans Adobe Sign*. Le nom de cette action utilisateur doit être le même pour tous les types de document pour tout cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui modifie l’état du document en *état de signature en Adobe*. Le nom de cette action utilisateur doit être le même pour tous les types de document pour tout cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
