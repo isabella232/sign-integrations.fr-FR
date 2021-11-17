@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 1c95f3eb0ddb077cad53a82b1a56358637839b16
+source-git-commit: 7ded835b48519cba656f160e691c697c91e2c8d0
 workflow-type: tm+mt
-source-wordcount: '3113'
+source-wordcount: '3131'
 ht-degree: 2%
 
 ---
@@ -39,7 +39,7 @@ Les étapes de haut niveau permettant de terminer l’intégration sont les suiv
 >
 >L’administrateur Adobe Sign doit effectuer les étapes de configuration Adobe Sign dans Adobe Sign.
 
-## Configurer [!DNL Veeva Vault]
+## Configurer [!DNL Veeva Vault] {#configure-veeva}
 
 Pour configurer [!DNL Veeva Vault] pour l’intégration avec Adobe Sign, créez certains objets qui permettent de suivre l’historique du cycle de vie d’un accord dans Vault. Les administrateurs doivent créer les objets suivants :
 
@@ -180,11 +180,11 @@ L’intégration d’Adobe Sign et Vault nécessite que vous créiez et configur
 
 * **Créer Adobe Sign**: Il crée ou affiche l’accord Adobe Sign.
 
-   Type : Cible du document : Afficher dans l&#39;URL de coffre-fort : <https://{integrationDomain}/veevavaultintsvc/partner/agreement?docId=${Document.id}&majVer=${Document.major_version_number__v}&minVer=${Document.minor_version_number__v}&vaultId=${Vault.Id>}
+   Type : Cible du document : Afficher dans l&#39;URL de coffre-fort : <https://api.na1.adobesign.com/api/gateway/veevavaultintsvc/partner/agreement?docId=${Document.id}&majVer=${Document.major_version_number__v}&minVer=${Document.minor_version_number__v}&vaultid=${Vault.id}&useWaitPage=true>
 
 * **Annuler Adobe Sign**: Il annule un accord existant dans Adobe Sign et rétablit l’état initial d’un document.
 
-   Type : Cible du document : Afficher dans l&#39;URL de coffre-fort : <https://{integrationDomain}/veevavaultintsvc/partner/agreement/cancel?docId=${Document.id}&majVer=${Document.major_version_number__v}&minVer=${Document.minor_version_number__v}&vaultId=${Vault.Id>}
+   Type : Cible du document : Afficher dans l&#39;URL de coffre-fort : : <https://api.na1.adobesign.com/api/gateway/veevavaultintsvc/partner/agreement/cancel?docId=${Document.id}&majVer=${Document.major_version_number__v}&minVer=${Document.minor_version_number__v}&vaultid=${Vault.id}&useWaitPage=true>
 
 ## Mettre à jour le cycle de vie du document {#document-lifecycle}
 
@@ -217,7 +217,7 @@ Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondr
    * Action qui transforme l’état du document en *In Adobe Sign Draft* état. Le nom de cette action utilisateur doit être le même pour tous les types de document pour tout cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui appelle l’action Web &quot;Adobe Sign&quot;. Cet état doit avoir une sécurité qui permet au rôle d&#39;administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
 
-   ![Image de l&#39;état du cycle de vie 1](images/lifecycle-state1.png)
+      ![Image de l&#39;état du cycle de vie 1](images/lifecycle-state1.png)
 
 * **In Adobe Sign Draft**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est déjà téléchargé vers Adobe Sign et que son accord est dans un état BROUILLON. C&#39;est un état obligatoire. Cet état doit définir les cinq actions utilisateur suivantes :
 
@@ -227,7 +227,7 @@ Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondr
    * Action qui appelle l’action Web &quot;Adobe Sign&quot; .
    * Action qui appelle l’action Web &quot;Annuler Adobe Sign&quot;. Cet état doit avoir une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
 
-   ![Image de l&#39;état du cycle de vie 2](images/lifecycle-state2.png)
+      ![Image de l&#39;état du cycle de vie 2](images/lifecycle-state2.png)
 
 * **In Adobe Sign Authoring**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est déjà téléchargé vers Adobe Sign et que son accord est à l’état AUTHORING ou DOCUMENTS_NOT_YET_PROCESSED. C&#39;est un état obligatoire. Cet état doit avoir quatre actions utilisateur suivantes définies :
 
@@ -236,7 +236,7 @@ Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondr
    * Action qui appelle l’action Web &quot;Adobe Sign&quot;
    * Action qui appelle l’action Web &quot;Annuler Adobe Sign&quot;. Cet état doit avoir une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
 
-   ![Image de l&#39;état du cycle de vie 3](images/lifecycle-state3.png)
+      ![Image de l&#39;état du cycle de vie 3](images/lifecycle-state3.png)
 
 * **Signature en Adobe**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est téléchargé vers Adobe Sign et que son accord est déjà envoyé aux participants (état OUT_FOR_SIGNATURE ou OUT_FOR_APPROVAL). C&#39;est un état obligatoire. Cet état doit comporter les cinq actions utilisateur suivantes définies :
 
@@ -246,7 +246,7 @@ Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondr
    * Action qui appelle l’action Web *Adobe Sign*.
    * Action appelant une action Web *Annuler Adobe Sign*. Cet état doit avoir une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
 
-   ![Image de l&#39;état du cycle de vie 4](images/lifecycle-state4.png)
+      ![Image de l&#39;état du cycle de vie 4](images/lifecycle-state4.png)
 
 * **Adobe signé (approuvé)**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est téléchargé vers Adobe Sign et que son accord est terminé (état SIGNÉ ou APPROUVÉ). Il s&#39;agit d&#39;un état obligatoire et il peut s&#39;agir d&#39;un état de cycle de vie existant, comme Approuvé.
 Cet état ne nécessite pas d’actions utilisateur. Cet état doit avoir une sécurité qui permet au rôle Administrateur Adobe Sign de : afficher des documents, afficher du contenu et modifier des champs.
@@ -262,6 +262,8 @@ Le diagramme suivant illustre les mappages entre les états d’accord Adobe Sig
 Les administrateurs doivent créer un nouvel enregistrement de groupe de types de document appelé &quot;Document Adobe Sign&quot;. Ce groupe de types de document est ajouté pour toutes les classifications de documents éligibles au processus Adobe Sign. Étant donné que la propriété de groupe de type de document n’est pas héritée du type au sous-type ni du sous-type au niveau de classification, elle doit être définie pour la classification de chaque document qui est éligible pour Adobe Sign.
 
 ![Image de type de document](images/document-type.png)
+
+![Image de type de document](images/document-edit-details.png)
 
 ### Créer une configuration de rôle d&#39;utilisateur {#create-user-role-setup}
 
@@ -335,7 +337,7 @@ Un administrateur de compte Adobe Sign doit suivre les étapes ci-dessous pour s
 
 **Étape 2.** Créez un groupe de types de document appelé &quot;Document Adobe Sign&quot;.
 
-**Étape 3.** Déployez le pack.
+**Étape 3.** [Déploiement du pack](https://helpx.adobe.com/content/dam/help/en/PKG-AdobeSign-Integration.zip).
 
 **Étape 4.** Créez un groupe géré par l’utilisateur appelé &quot;Groupe d’administrateurs Adobe Sign&quot;.
 
@@ -359,7 +361,7 @@ Un administrateur de compte Adobe Sign doit suivre les étapes ci-dessous pour s
 
 **Étape 2.** Créez un groupe de types de document appelé &quot;Document Adobe Sign&quot;.
 
-**Étape 3.** Déployez le pack.
+**Étape 3.** [Déploiement du pack](https://helpx.adobe.com/content/dam/help/en/PKG-AdobeSign-Integration.zip).
 
 **Étape 4.** Créez un groupe géré par l’utilisateur appelé &quot;Groupe d’administrateurs Adobe Sign&quot;.
 
