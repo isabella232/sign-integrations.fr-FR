@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 7ded835b48519cba656f160e691c697c91e2c8d0
+source-git-commit: aef70e46f24bb019b07092d84d69519fe16846e4
 workflow-type: tm+mt
-source-wordcount: '3131'
+source-wordcount: '3163'
 ht-degree: 2%
 
 ---
@@ -182,9 +182,13 @@ L’intégration d’Adobe Sign et Vault nécessite que vous créiez et configur
 
    Type : Cible du document : Afficher dans l&#39;URL de coffre-fort : <https://api.na1.adobesign.com/api/gateway/veevavaultintsvc/partner/agreement?docId=${Document.id}&majVer=${Document.major_version_number__v}&minVer=${Document.minor_version_number__v}&vaultid=${Vault.id}&useWaitPage=true>
 
+   ![Image de create Adobe Sign](images/create-adobe-sign.png)
+
 * **Annuler Adobe Sign**: Il annule un accord existant dans Adobe Sign et rétablit l’état initial d’un document.
 
    Type : Cible du document : Afficher dans l&#39;URL de coffre-fort : : <https://api.na1.adobesign.com/api/gateway/veevavaultintsvc/partner/agreement/cancel?docId=${Document.id}&majVer=${Document.major_version_number__v}&minVer=${Document.minor_version_number__v}&vaultid=${Vault.id}&useWaitPage=true>
+
+   ![Image de l&#39;annulation de Adobe Sign](images/cancel-adobe-sign.png)
 
 ## Mettre à jour le cycle de vie du document {#document-lifecycle}
 
@@ -192,12 +196,16 @@ Pour chaque type de document éligible pour la signature d’Adobe, le cycle de 
 
 ### Rôle du cycle de vie {#lifecycle-role}
 
-Le rôle d’application Administrateur Adobe Sign doit être ajouté à tous les cycles de vie utilisés par les documents éligibles à la signature d’Adobe. Ce rôle doit être créé avec les options suivantes :
-
-* Activer le contrôle d’accès dynamique
-* Règles de partage de documents qui incluent uniquement le groupe de types de documents
+Le rôle d’application Administrateur Adobe Sign doit être ajouté à tous les cycles de vie utilisés par les documents éligibles à la signature d’Adobe, comme indiqué ci-dessous.
 
 ![Image des rôles d&#39;administrateur de cycle de vie](images/document-lifecycle-admin-role.png)
+
+Le rôle d’administrateur doit être créé avec les options suivantes :
+
+* Activation du contrôle d&#39;accès dynamique.
+* Règles de partage de documents qui incluent uniquement le groupe de types de documents, comme illustré dans l’image ci-dessous.
+
+![Image de la règle de partage adobe sign](images/adobe-sign-sharing-rule.png)
 
 ### États du cycle de vie {#lifecycle-states}
 
@@ -263,7 +271,9 @@ Les administrateurs doivent créer un nouvel enregistrement de groupe de types d
 
 ![Image de type de document](images/document-type.png)
 
-![Image de type de document](images/document-edit-details.png)
+![Image des détails de modification du document](images/document-edit-details.png)
+
+![Image de groupes de types de document](images/document-type-groups.png)
 
 ### Créer une configuration de rôle d&#39;utilisateur {#create-user-role-setup}
 
