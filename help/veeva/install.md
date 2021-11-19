@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: aef70e46f24bb019b07092d84d69519fe16846e4
+source-git-commit: 1cf95ee799d0a349636027db0c06467f4529663c
 workflow-type: tm+mt
-source-wordcount: '3163'
+source-wordcount: '3164'
 ht-degree: 2%
 
 ---
@@ -250,7 +250,7 @@ Lorsqu’un document Vault est envoyé à Adobe Sign, son état doit correspondr
 
    * Action qui modifie l’état du document en état d’Adobe Sign Annulé. L’état cible de cette action peut être n’importe quelle exigence du client et peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit le cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui modifie l’état du document en état d’éjection Adobe Sign. L’état cible de cette action peut être n’importe quelle exigence du client et peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit le cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
-   * Action qui transforme l’état du document en état de signature d’Adobe. L’état cible de cette action peut être n’importe quelle exigence du client et peut être différent pour différents types. Toutefois, le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit le cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
+   * Action qui transforme l’état du document en état de signature d’Adobe. L’état cible de cette action peut être n’importe quelle exigence du client et peut être différent pour différents types. Toutefois, le nom de cette action utilisateur doit être le même pour tous les types de document, quel que soit le cycle de vie. Si nécessaire, les critères de cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign égales à Oui&quot;.
    * Action qui appelle l’action Web *Adobe Sign*.
    * Action appelant une action Web *Annuler Adobe Sign*. Cet état doit avoir une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu affichable et modifier l’état.
 
@@ -363,7 +363,7 @@ Un administrateur de compte Adobe Sign doit suivre les étapes ci-dessous pour s
 
 **Étape 10.** Ajoutez le groupe de types de document appelé &quot;Document Adobe Sign&quot; pour toutes les classifications de documents éligibles au processus Adobe Sign.
 
-**Étape 11.** Une fois toutes les configurations terminées, le système doit s’assurer que l’utilisateur administrateur Adobe Sign est ajouté par le CAD pour tous les documents éligibles au processus Adobe Sign. Pour ce faire, créez l’enregistrement de configuration de rôle d’utilisateur approprié qui spécifie le groupe de types de document comme &quot;Document Adobe Sign&quot;, Rôle d’application comme &quot;Rôle d’administrateur Adobe Sign&quot; et un utilisateur d’intégration.
+**Étape 11.** Une fois toutes les configurations terminées, le système doit s’assurer que l’utilisateur Administrateur Adobe Sign est ajouté par le CAD pour tous les documents éligibles au processus Adobe Sign. Pour ce faire, créez l’enregistrement de configuration de rôle d’utilisateur approprié qui spécifie le groupe de types de document comme &quot;Document Adobe Sign&quot;, Rôle d’application comme &quot;Rôle d’administrateur Adobe Sign&quot; et un utilisateur d’intégration.
 
 ### Cycle de vie de déploiement spécifique {#specific-deployment}
 
