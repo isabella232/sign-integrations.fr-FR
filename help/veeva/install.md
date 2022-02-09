@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 722f39a7220d72fde19ebb1058c8c2e8dea06b46
+source-git-commit: f647d0573f3e44f5a7e7997a309a8d18886959be
 workflow-type: tm+mt
-source-wordcount: '3401'
+source-wordcount: '3317'
 ht-degree: 2%
 
 ---
@@ -43,41 +43,13 @@ Les étapes générales pour terminer l’intégration sont les suivantes :
 
 Pour configurer [!DNL Veeva Vault] Pour l’intégration avec Adobe Sign, vous devez implémenter les étapes suivantes :
 
-**Étape 1.** Créez un groupe appelé &quot;Groupe d’administrateurs Adobe Sign&quot;.
-
-**Étape 2.** [Déploiement du pack](https://helpx.adobe.com/content/dam/help/en/PKG-AdobeSign-Integration.zip).
-
-**Étape 3.** Création de profils de sécurité
-
-**Étape 4.** Créer un utilisateur
-
-**Étape 5.** Configurer le groupe de types de document
-
-**Étape 6.** Créer une configuration de rôle utilisateur
-
-**Étape 7.** Configuration des champs de document
-
-**Étape 8.** Déclarer les formats associés
-
-**Étape 9.** Mettre à jour les actions web
-
-**Étape 10.** Mettre à jour le cycle de vie
-
-**Étape 11.** Ajout de la scène Adobe Sign au cycle de vie général dans les groupes de scène de cycle de vie
-
-**Étape 12.** Définir des autorisations pour le rôle d&#39;utilisateur dans l&#39;état du cycle de vie
-
-**Étape 13.** Configuration de la sécurité atomique en fonction de l’état du document et du rôle de l’utilisateur
-
-**Étape 14.** Créer des messages de document pour Adobe Sign Annuler
-
-### 1. Créer un groupe {#create-group}
+### Étape 1. Créer un groupe {#create-group}
 
 Pour configurer Adobe Sign pour [!DNL Vault], un nouveau groupe appelé *Groupe d’administration Adobe Sign* est créée. Ce groupe est utilisé pour définir la sécurité au niveau du champ de document pour les champs associés à Adobe Sign et doit inclure *Profil d’intégration Adobe Sign* par défaut.
 
 ![Image des détails des événements de signature](images/create-admin-group.png)
 
-### 2. Déployez le pack {#deploy-package}
+### Étape 2. Déploiement du pack {#deploy-package}
 
 [Déploiement du pack](https://helpx.adobe.com/content/dam/help/en/PKG-AdobeSign-Integration.zip) et suivez les étapes. Une fois déployé, le pack crée :
 
@@ -111,7 +83,7 @@ L’objet Signature est créé pour stocker les informations relatives à l’ac
 | signature_type__c | Type de signature | Chaîne (20) | Contient le type de signature de l’accord dans Adobe Sign (PAR ÉCRIT ou ESIGN). |
 | start_date__c | Date de début | DateHeure | Date d’envoi de l’accord pour signature |
 | cancelation_date__c | Date de résiliation | DateHeure | Contient la date à laquelle l’accord a été annulé. |
-| completed_date__c | Date de fin | DateHeure | Holds the date when agreement has been completed. |
+| completed_date__c | Date de fin | DateHeure | Contient la date à laquelle l’accord a été complété. |
 | viewable_rendition_used__c | Format associé visible utilisé | Booléen | Indicateur qui indique si le rendu visible a été envoyé pour signature. (par défaut, elle est vraie) |
 
 ![Image des détails de l’objet de signature](images/signature-object-details.png)
@@ -142,7 +114,7 @@ L’objet Événement de signature est créé pour stocker les informations rela
 | Champ | Libellé | Type | Description |
 | --- | --- | ---| --- | 
 | acting_user_email__c | Adresse él. du responsable de l’action | Chaîne | Contient l’adresse e-mail de l’utilisateur Adobe Sign qui a exécuté l’action à l’origine de la génération de l’événement |
-| acting_user_name__c | Nom d&#39;utilisateur intérimaire | Chaîne | Holds the name of Adobe Sign user that performed the action that caused event to be generated |
+| acting_user_name__c | Nom d&#39;utilisateur intérimaire | Chaîne | Contient le nom de l’utilisateur Adobe Sign qui a exécuté l’action à l’origine de la génération de l’événement |
 | description__c | Description | Chaîne | Contient la description de l’événement Adobe Sign |
 | event_date__c | Date de l’événement | DateHeure | Contient la date et l’heure de l’événement Adobe Sign |
 | event_type__c | Type d&#39;événement | Chaîne | Contient le type de l’événement Adobe Sign |
@@ -150,7 +122,7 @@ L’objet Événement de signature est créé pour stocker les informations rela
 | participant_comment__c | Commentaire du participant | Chaîne | Contient le commentaire du participant Adobe Sign, le cas échéant |
 | participant_email__c | Adresse él. du participant | Chaîne | Contient l’adresse e-mail du participant Adobe Sign |
 | participant_role__c | Rôle de participant | Chaîne | Contient le rôle du participant Adobe Sign |
-| signature__c | Signature | Object (Signature) | Contient la référence à l’enregistrement parent de la signature |
+| signature__c | Signature | Objet (signature) | Contient la référence à l’enregistrement parent de la signature |
 
 ![Image des détails des événements de signature](images/signature-event-object-details.png)
 
@@ -166,7 +138,7 @@ Vous devez créer un rôle d&#39;application appelé *Rôle d’administrateur A
 
 ![Image des rôles de création d&#39;application](images/create-application-roles.png)
 
-### 3. Configuration des profils de sécurité {#security-profiles}
+### Étape 3. Configuration des profils de sécurité {#security-profiles}
 
 Pour une intégration réussie du coffre-fort, un nouveau profil de sécurité appelé *Profil d’intégration Adobe Sign* est créé et son autorisation est définie pour *Actions administrateur Adobe Sign*. Le profil d’intégration Adobe Sign est attribué au compte système et est utilisé par l’intégration lors de l’appel des API Vault. Ce profil autorise les autorisations pour :
 
@@ -179,7 +151,7 @@ Les profils de sécurité des utilisateurs qui ont besoin d’accéder à l’hi
 
 ![Image des détails des événements de signature](images/set-permissions.png)
 
-## 4. Créer un utilisateur {#create-user}
+### Étape 4. Créer un utilisateur {#create-user}
 
 L’utilisateur du compte système Vault de l’intégration Adobe Sign doit :
 
@@ -198,7 +170,7 @@ Pour vous assurer que l’utilisateur du compte système appartient au groupe d�
 
    ![Image des détails des événements de signature](images/add-user.png)
 
-### 5. Créer un groupe de types de document {#create-document-type-group}
+### Étape 5. Configurer le groupe de types de document {#create-document-type-group}
 
 Lorsque vous déployez le package Adobe Sign, il crée un enregistrement de groupe de types de document appelé &quot;Document Adobe Sign&quot;.
 
@@ -212,13 +184,13 @@ Vous devez ajouter ce groupe de types de document pour toutes les classification
 
 **Remarque :** Si l&#39;objet Configuration du rôle d&#39;utilisateur ne contient pas le champ faisant référence à l&#39;objet Groupe de types de document, vous devez ajouter le champ.
 
-### 6. Créer une configuration de rôle d&#39;utilisateur {#create-user-role-setup}
+### Étape 6. Créer une configuration de rôle utilisateur {#create-user-role-setup}
 
 Une fois les cycles de vie correctement configurés, le système doit s’assurer que l’utilisateur Adobe Sign Admin est ajouté par DAC pour tous les documents éligibles au processus Adobe Sign. Pour ce faire, créez l&#39;enregistrement de configuration de rôle d&#39;utilisateur approprié qui spécifie :
 
-* Groupe de types de documents en tant que &quot;Document Adobe Sign&quot;,
-* Rôle d’application en tant que &quot;Rôle d’administrateur Adobe Sign&quot; et
-* Utilisateur d’intégration.
+* Groupe de types de document en tant que document Adobe Sign
+* Rôle d’application en tant que rôle d’administrateur Adobe Sign
+* Utilisateur d&#39;intégration
 
 ![Image de la configuration du rôle utilisateur](images/user-role-setup.png)
 
@@ -226,7 +198,7 @@ Une fois les cycles de vie correctement configurés, le système doit s’assure
 
 ![Image de la configuration du rôle utilisateur](images/create-setup-field.png)
 
-### 7. Configurer les champs de document {#create-fields}
+### Étape 7. Configurer les champs de document {#create-fields}
 
 Pour établir l’intégration avec Adobe Sign, deux nouveaux champs de document partagé sont requis :
 
@@ -257,7 +229,7 @@ Pour configurer les champs de document :
 
    ![Image des actions d’autorisation des utilisateurs Adobe Sign](images/allow-adobe-sign-user-actions.png)
 
-### 8. Déclarer des rendus de documents {#declare-renditions}
+### Étape 8. Déclarer des formats associés de document {#declare-renditions}
 
 Le nouveau type de rendu appelé *Adobe Sign Rendition (adobe_sign_rendition__c) est utilisé par l’intégration Vault pour télécharger des documents signés par PDF vers Adobe Sign. Le rendu Adobe Sign doit être déclaré pour chaque type de document éligible à la signature Adobe.
 
@@ -265,7 +237,7 @@ Le nouveau type de rendu appelé *Adobe Sign Rendition (adobe_sign_rendition__c)
 
 ![Image de types de rendu](images/edit-details-clinical-type.png)
 
-### 9. Mise à jour des actions web {#web-actions}
+### Étape 9. Actions Web Update {#web-actions}
 
 L&#39;intégration d&#39;Adobe Sign et de Vault nécessite la création et la configuration des deux actions Web suivantes :
 
@@ -281,7 +253,7 @@ L&#39;intégration d&#39;Adobe Sign et de Vault nécessite la création et la co
 
    ![Image d’annulation d’Adobe Sign](images/cancel-adobe-sign.png)
 
-### 10. Mettre à jour le cycle de vie du document {#document-lifecycle}
+### Étape 10. Mettre à jour le cycle {#document-lifecycle}
 
 Pour chaque type de document éligible à la signature Adobe, le cycle de vie du document correspondant doit être mis à jour en ajoutant de nouveaux rôles et états de cycle de vie.
 
@@ -365,21 +337,21 @@ Le diagramme suivant illustre les mappages entre les états d’accord Adobe Sig
 
 ![Image de mappages Adobe Sign Vault](images/sign-vault-mappings.png)
 
-### 11. Ajouter une étape Adobe Sign au cycle de vie général dans les groupes d’étapes du cycle de vie
+### Étape 11. Ajout de la scène Adobe Sign au cycle de vie général dans les groupes de scène de cycle de vie
 
 ![Image de mappages Adobe Sign Vault](images/add-adobe-sign-stage.png)
 
-### 12. Définir des autorisations pour le rôle d&#39;utilisateur dans l&#39;état du cycle de vie
+### Étape 12. Définir des autorisations pour le rôle d&#39;utilisateur dans l&#39;état du cycle de vie
 
 Vous devez définir les autorisations appropriées pour chaque rôle d&#39;utilisateur dans l&#39;état du cycle de vie, comme indiqué dans l&#39;image ci-dessous.
 
 ![Image de mappages Adobe Sign Vault](images/set-user-role-permissions.png)
 
-### 13. Set up atomic security based on the document state and the user role
+### Étape 13. Configuration de la sécurité atomique en fonction de l’état du document et du rôle de l’utilisateur
 
 ![Image de mappages Adobe Sign Vault](images/set-atomic-security.png)
 
-### 14. Créer des messages de document pour Adobe Sign Annuler
+### Étape 14. Créer des messages de document pour Adobe Sign Annuler
 
 ![Image de mappages Adobe Sign Vault](images/create-cancel-message.png)
 
