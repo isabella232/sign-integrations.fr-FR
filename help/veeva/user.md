@@ -9,9 +9,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 39a43637-af3f-432e-a784-8f472aa86df5
-source-git-commit: e1394c24aebd1e026eb6c5a33935149f33ef8ea4
+source-git-commit: f460f23ac3e412b527a91668561fff48ac518941
 workflow-type: tm+mt
-source-wordcount: '668'
+source-wordcount: '667'
 ht-degree: 1%
 
 ---
@@ -30,7 +30,7 @@ Le processus global d’envoi de documents pour signature est similaire à l’e
 
 Intégration d&#39;Adobe Sign avec [!DNL Veeva Vault] rationalise et accélère vos workflows documentaires et de signature. En utilisant le flux de travaux d’intégration, vous :
 
-* Gagnez du temps et économisez des ressources dans le courrier postal, la nuit et les télécopies.
+* Gagnez du temps et économisez des ressources en publiant des e-mails, en passant la nuit ou par fax.
 * Envoyer des contrats pour signature électronique ou approbation depuis [!DNL Veeva Vault], accédez à l’historique des contrats en temps réel et consultez les contrats enregistrés.
 * Suivez les transactions en temps réel dans l’ensemble de votre organisation et recevez des informations à jour lorsque les accords sont consultés, signés, annulés ou refusés.
 * eSign dans plus de 20 langues et prise en charge du service de télécopie dans plus de 50 langues dans le monde.
@@ -107,7 +107,7 @@ Pour envoyer un accord à l’aide d’Adobe Sign pour Veeva :
 
    ![](images/add-signature-fields.png)
 
-1. Il envoie le document au destinataire pour signature. Une fois que le destinataire reçoit l’e-mail du document, l’état du document change de [!UICONTROL Révisé] à [!UICONTROL En Adobe Signature].
+1. Il envoie le document aux destinataires pour signature. Une fois que le destinataire reçoit l’e-mail du document, l’état du document change de [!UICONTROL Révisé] à [!UICONTROL En Adobe Signature].
 
    ![](images/in-adobe-signing.png)
 
