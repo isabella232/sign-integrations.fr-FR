@@ -10,10 +10,10 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: f460f23ac3e412b527a91668561fff48ac518941
+source-git-commit: c3ad36ec887230d746d8d2084127155615f1d0b9
 workflow-type: tm+mt
-source-wordcount: '3319'
-ht-degree: 2%
+source-wordcount: '3145'
+ht-degree: 3%
 
 ---
 
@@ -132,24 +132,16 @@ Un objet Process Locker est créé pour verrouiller le processus d’intégratio
 
 ![Image des détails des événements de signature](images/process-locker-details.png)
 
-#### Rôle d&#39;application {#create-application-roles}
-
-Vous devez créer un rôle d&#39;application appelé *Rôle d’administrateur Adobe Sign*. Ce rôle doit être défini dans le cycle de vie de chaque type de document éligible à la signature Adobe. Pour chaque état du cycle de vie spécifique à Adobe Sign, le rôle d’administrateur Adobe Sign est ajouté et configuré avec les autorisations appropriées.
-
-![Image des rôles de création d&#39;application](images/create-application-roles.png)
-
 ### Étape 3. Configuration des profils de sécurité {#security-profiles}
 
-Pour une intégration réussie du coffre-fort, un nouveau profil de sécurité appelé *Profil d’intégration Adobe Sign* est créé et son autorisation est définie pour *Actions administrateur Adobe Sign*. Le profil d’intégration Adobe Sign est attribué au compte système et est utilisé par l’intégration lors de l’appel des API Vault. Ce profil autorise les autorisations pour :
+Le déploiement réussi du pack à l’étape 2 crée un profil d’intégration Adobe Sign. Le profil d’intégration Adobe Sign est attribué au compte système et est utilisé par l’intégration lors de l’appel des API Vault. Ce profil autorise les autorisations pour :
 
 * API Vault
 * Lecture, création, modification et suppression : Objets Signature, Signataire, Evénements de signature et Verrouillage de processus
 
+Vous devez mettre à jour le groupe d’administrateurs Adobe Sign (créé à l’étape 1) en définissant le profil de sécurité inclus sur Profil d’intégration Adobe Sign, comme indiqué dans l’image ci-dessous.
+
 ![Image des détails des événements de signature](images/security-profiles.png)
-
-Les profils de sécurité des utilisateurs qui ont besoin d’accéder à l’historique Adobe Sign dans Vault doivent disposer des autorisations de lecture pour les objets Signature, Signataire et Événement de signature.
-
-![Image des détails des événements de signature](images/set-permissions.png)
 
 ### Étape 4. Créer un utilisateur {#create-user}
 
@@ -160,7 +152,7 @@ L’utilisateur du compte système Vault de l’intégration Adobe Sign doit :
 * Avoir une stratégie de sécurité spécifique qui désactive l&#39;expiration du mot de passe
 * Soyez membre du groupe d’administration Adobe Sign.
 
-Pour vous assurer que l’utilisateur du compte système appartient au groupe d’administration Adobe Sign pour le cycle de vie de document spécifique, vous devez créer des enregistrements de configuration de rôle d’utilisateur. Pour ce faire, procédez comme suit :
+Pour ce faire, procédez comme suit :
 
 1. Créer un compte système Vault utilisateur de l’intégration Adobe Sign.
 
@@ -180,9 +172,11 @@ Vous devez ajouter ce groupe de types de document pour toutes les classification
 
 ![Image des détails de modification du document](images/document-edit-details.png)
 
-![Image de type de document](images/document-type.png)
+**Remarque :** Si l&#39;objet Configuration du rôle d&#39;utilisateur ne contient pas le champ faisant référence à l&#39;objet Groupe de types de document, vous devez ajouter le champ. Pour ce faire, accédez à **[!UICONTROL Objet]** > **[!UICONTROL Configuration du rôle utilisateur]** > **[!UICONTROL Champs]** et effectuez les étapes requises, comme indiqué dans l’image ci-dessous.
 
-**Remarque :** Si l&#39;objet Configuration du rôle d&#39;utilisateur ne contient pas le champ faisant référence à l&#39;objet Groupe de types de document, vous devez ajouter le champ.
+![Image de la configuration du rôle utilisateur](images/create-setup-field.png)
+
+![Image de type de document](images/document-type.png)
 
 ### Étape 6. Créer une configuration de rôle utilisateur {#create-user-role-setup}
 
@@ -194,40 +188,36 @@ Une fois les cycles de vie correctement configurés, le système doit s’assure
 
 ![Image de la configuration du rôle utilisateur](images/user-role-setup.png)
 
-**Remarque :** Si l&#39;objet Configuration du rôle d&#39;utilisateur ne contient pas le champ faisant référence à l&#39;objet Groupe de types de document, vous devez ajouter le champ. Pour ce faire, accédez à **[!UICONTROL Objet]** > **[!UICONTROL Configuration du rôle utilisateur]** > **[!UICONTROL Champs]** et effectuez les étapes requises, comme indiqué dans l’image ci-dessous.
-
-![Image de la configuration du rôle utilisateur](images/create-setup-field.png)
-
 ### Étape 7. Configurer les champs de document {#create-fields}
 
-Pour établir l’intégration avec Adobe Sign, deux nouveaux champs de document partagé sont requis :
+Le déploiement de packs crée les deux nouveaux champs de document partagé suivants, qui sont requis pour établir l’intégration :
 
 * Signature (signature__c)
 * Autoriser les actions utilisateur Adobe Sign (allow_adobe_sign_user_actions__c)
 
-![Image des détails du document](images/create-document-fields.png)
+![Image](images/2-document-fields.png)
 
 Pour configurer les champs de document :
 
 1. Accédez à l’onglet Configuration et sélectionnez **[!UICONTROL Champs de document]** > **[!UICONTROL Champs partagés]**.
 1. Dans le champ Afficher la section , sélectionnez **[!UICONTROL Créer une section d&#39;affichage]** et affectez **[!UICONTROL Signature Adobe]** comme étiquette de section.
 
-   ![Image des détails du document](images/create-display-section.png)
+   ![Image](images/create-display-section.png)
 
 1. Pour les deux champs de document partagés (signature__c et allow_adobe_sign_user_actions__c), mettez à jour la section de l’interface utilisateur avec **[!UICONTROL Signature Adobe]** comme libellé de section.
 1. Ajoutez les trois champs partagés à tous les types de documents éligibles à la signature Adobe. Pour ce faire, dans la page Document de base, sélectionnez **[!UICONTROL Ajouter]** > **[!UICONTROL Champ partagé existant]** dans le coin supérieur droit.
 
-   ![Image des détails du document](images/add-existing-fields.png)
+   ![Image](images/create-document-fields.png)
 
-   ![Image des détails du document](images/use-shared-fields.png)
+   ![Image](images/add-existing-fields.png)
+
+   ![Image](images/use-shared-fields.png)
 
 1. Notez que les deux champs doivent avoir une sécurité spécifique qui permet uniquement aux membres du groupe d’administration Adobe Sign de mettre à jour leurs valeurs.
 
-   ![Image des détails du document](images/security-overrides.png)
+   ![Image](images/security-overrides.png)
 
-1. Les administrateurs doivent ajouter le champ partagé existant. *Désactiver les incrustations de coffre-fort (disable_vault_overlays__v)* et définissez-le sur **[!UICONTROL Actif]** pour tous les types de documents éligibles à la signature Adobe. Si vous le souhaitez, le champ peut avoir une sécurité spécifique qui permet uniquement aux membres du groupe d’administration Adobe Sign de mettre à jour sa valeur.
-
-   ![Image des actions d’autorisation des utilisateurs Adobe Sign](images/allow-adobe-sign-user-actions.png)
+Disable Vault Overlays (disable_vault_overlays__v) est un champ partagé existant. Si vous le souhaitez, le champ peut avoir une sécurité spécifique qui permet uniquement aux membres du groupe d’administration Adobe Sign de mettre à jour sa valeur.
 
 ### Étape 8. Déclarer des formats associés de document {#declare-renditions}
 
@@ -299,64 +289,64 @@ Pour mettre à jour le cycle de vie du document, procédez comme suit :
 
    * **Avant signature Adobe** (Révisé) : Il s’agit d’un nom d’espace réservé pour l’état à partir duquel le document peut être envoyé à Adobe Sign. En fonction du type de document, il peut s’agir de l’état Brouillon ou Révisé. Le libellé de l’état du document peut être personnalisé selon les exigences du client. Avant que l’Adobe Signature ne définisse les deux actions utilisateur suivantes :
 
-   * Action qui modifie l’état du document en *Dans Adobe Sign Draft* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-   * Action qui appelle l’action Web &quot;Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
+      * Action qui modifie l’état du document en *Dans Adobe Sign Draft* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui appelle l’action Web &quot;Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
 
-   ![Image de l&#39;état du cycle de vie 1](images/lifecycle-state1.png)
+      ![Image de l&#39;état du cycle de vie 1](images/lifecycle-state1.png)
 
    * **Dans Adobe Sign Draft**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est déjà téléchargé vers Adobe Sign et que son accord est à l’état BROUILLON . C&#39;est un état requis. Cet état doit définir les cinq actions utilisateur suivantes :
 
-   * Action qui modifie l’état du document en *Dans la création Adobe Sign* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-   * Action qui modifie l’état du document en *En Adobe Signature état*. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-   * Action qui modifie l’état du document en *Adobe Sign annulé* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-   * Action qui appelle l’action web &quot;Adobe Sign&quot; .
-   * Action qui appelle l’action web &quot;Annuler Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
+      * Action qui modifie l’état du document en *Dans la création Adobe Sign* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui modifie l’état du document en *En Adobe Signature état*. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui modifie l’état du document en *Adobe Sign annulé* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui appelle l’action web &quot;Adobe Sign&quot; .
+      * Action qui appelle l’action web &quot;Annuler Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
 
-   ![Image de l&#39;état du cycle de vie 2](images/lifecycle-state2.png)
+      ![Image de l&#39;état du cycle de vie 2](images/lifecycle-state2.png)
 
    * **Dans la création Adobe Sign**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est déjà téléchargé vers Adobe Sign et que son accord est à l’état CRÉATION ou DOCUMENTS_NOT_YET_PROCESSED. C&#39;est un état requis. Cet état doit comporter les quatre actions utilisateur suivantes :
 
-   * Action qui remplace l’état du document par l’état Adobe Sign Annulé . Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-   * Action qui modifie l’état du document en Adobe Signature. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-   * Action qui appelle l’action web &quot;Adobe Sign&quot;
-   * Action qui appelle l’action web &quot;Annuler Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
+      * Action qui remplace l’état du document par l’état Adobe Sign Annulé . Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui modifie l’état du document en Adobe Signature. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui appelle l’action web &quot;Adobe Sign&quot;
+      * Action qui appelle l’action web &quot;Annuler Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
 
-   ![Image de l&#39;état du cycle de vie 3](images/lifecycle-state3.png)
+      ![Image de l&#39;état du cycle de vie 3](images/lifecycle-state3.png)
 
    * **En Adobe Signature**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est chargé dans Adobe Sign et que son accord est déjà envoyé aux participants (état OUT_FOR_SIGNATURE ou OUT_FOR_APPROVAL). C&#39;est un état requis. Cet état doit comporter les cinq actions utilisateur suivantes :
 
-   * Action qui remplace l’état du document par l’état Adobe Sign Annulé . L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-   * Action qui remplace l’état du document par l’état Adobe Sign rejeté. L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-   * Action qui remplace l’état du document par l’état Signé par l’Adobe. L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Toutefois, le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-   * Action qui appelle l&#39;action Web *Adobe Sign*.
-   * Action qui appelle Action Web *Annuler Adobe Sign*. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
+      * Action qui remplace l’état du document par l’état Adobe Sign Annulé . L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui remplace l’état du document par l’état Adobe Sign rejeté. L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui remplace l’état du document par l’état Signé par l’Adobe. L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Toutefois, le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui appelle l&#39;action Web *Adobe Sign*.
+      * Action qui appelle Action Web *Annuler Adobe Sign*. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
 
-   ![Image de l&#39;état du cycle de vie 4](images/lifecycle-state4.png)
+      ![Image de l&#39;état du cycle de vie 4](images/lifecycle-state4.png)
 
-   * **Adobe signé (approuvé)**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est chargé dans Adobe Sign et que son accord est terminé (état SIGNÉ ou APPROUVÉ). Il s&#39;agit d&#39;un état obligatoire qui peut être un état de cycle de vie existant, comme Approuvé.
+      * **Adobe signé (approuvé)**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est chargé dans Adobe Sign et que son accord est terminé (état SIGNÉ ou APPROUVÉ). Il s&#39;agit d&#39;un état obligatoire qui peut être un état de cycle de vie existant, comme Approuvé.
 Cet état ne nécessite aucune action de l’utilisateur. Il doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher des documents, afficher du contenu et modifier des champs.
 
    Le diagramme suivant illustre les mappages entre les états d’accord Adobe Sign et de document Vault, où l’état &quot;Avant signature de l’Adobe&quot; est Brouillon.
 
-   ![Image de mappages Adobe Sign Vault](images/sign-vault-mappings.png)
+   ![Image](images/sign-vault-mappings.png)
 
 ### Étape 11. Ajout de la scène Adobe Sign au cycle de vie général dans les groupes de scène de cycle de vie
 
-![Image de mappages Adobe Sign Vault](images/add-adobe-sign-stage.png)
+![Image](images/add-adobe-sign-stage.png)
 
 ### Étape 12. Définir des autorisations pour le rôle d&#39;utilisateur dans l&#39;état du cycle de vie
 
 Vous devez définir les autorisations appropriées pour chaque rôle d&#39;utilisateur dans l&#39;état du cycle de vie, comme indiqué dans l&#39;image ci-dessous.
 
-![Image de mappages Adobe Sign Vault](images/set-user-role-permissions.png)
+![Image](images/set-user-role-permissions.png)
 
 ### Étape 13. Configuration de la sécurité atomique en fonction de l’état du document et du rôle de l’utilisateur
 
-![Image de mappages Adobe Sign Vault](images/set-atomic-security.png)
+![Image](images/set-atomic-security.png)
 
 ### Étape 14. Créer des messages de document pour Adobe Sign Annuler
 
-![Image de mappages Adobe Sign Vault](images/create-cancel-message.png)
+![Image](images/create-cancel-message.png)
 
 ## Connect [!DNL Veeva Vault] vers Adobe Sign à l’aide de middleware {#connect-middleware}
 
@@ -380,7 +370,7 @@ Un administrateur de compte Adobe Sign doit suivre les étapes ci-dessous pour s
 
 1. Sélectionnez le fichier **[!UICONTROL Paramètres]** .
 
-   La page Paramètres affiche les connexions disponibles et n’en affiche aucune en cas de première configuration de connexion, comme indiqué ci-dessous.
+   La page Paramètres affiche les connexions disponibles, ainsi que *Aucune connexion disponible* en cas de première configuration de connexion, comme indiqué ci-dessous.
 
    ![Image](images/middleware_newconnection.png)
 
