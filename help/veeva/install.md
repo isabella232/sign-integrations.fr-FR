@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: db0d9022e520e9db39254e78b66aab8b913f353a
+source-git-commit: 535c4510e876c708679d7f6a800206264a9876e2
 workflow-type: tm+mt
-source-wordcount: '3169'
+source-wordcount: '3428'
 ht-degree: 3%
 
 ---
@@ -122,16 +122,54 @@ L’objet Événement de signature est créé pour stocker les informations rela
 | name__v | Nom | Chaîne | Nom d&#39;événement généré automatiquement |
 | participant_comment__c | Commentaire du participant | Chaîne | Contient le commentaire du participant Adobe Sign, le cas échéant |
 | participant_email__c | Adresse él. du participant | Chaîne | Contient l’adresse e-mail du participant Adobe Sign |
-| participant_role__c | Rôle de participant | Chaîne | Holds the Adobe Sign participant’s role |
+| participant_role__c | Rôle de participant | Chaîne | Contient le rôle du participant Adobe Sign |
 | signature__c | Signature | Objet (signature) | Contient la référence à l’enregistrement parent de la signature |
 
-![Image des détails des événements de signature](images/signature-event-object-details.png)
+![Image](images/signature-event-object-details.png)
 
 #### Objet Process Locker {#process-locker}
 
 Un objet Process Locker est créé pour verrouiller le processus d’intégration d’Adobe Sign. Aucun champ personnalisé n’est requis.
 
 ![Image des détails des événements de signature](images/process-locker-details.png)
+
+Les objets Signature, Signatory, Signature Event et Process Locker qui font partie du package de déploiement ont la propriété &quot;Audit data changes for this object&quot; activée par défaut.
+
+**Remarque :** Pour inclure les modifications des données d&#39;enregistrement des objets de capture Vault dans les journaux d&#39;audit, activez le paramètre Modifier les données d&#39;audit. Ce paramètre est Désactivé par défaut. Une fois que vous avez activé ce paramètre et créé des enregistrements, vous ne pouvez pas le désactiver. Si ce paramètre est désactivé et qu&#39;il existe des enregistrements, seul un propriétaire de coffre peut mettre à jour le paramètre.
+
+#### **Afficher les participants et l’historique de l’objet Signature** {#display-participants-history}
+
+L’objet Signature qui fait partie du pack de déploiement est fourni avec le fichier [Mise en page Détails de la signature](https://vvtechpartner-adobe-rim.veevavault.com/ui/#admin/content_setup/object_schema/pagelayout?t=signature__c&amp;d=signature_detail_page_layout__c). La mise en page comporte des sections pour les participants et l’historique.
+
+* La *Participants* contient la section Objets associés configurée comme indiqué dans l’image ci-dessous.
+
+   ![Image](images/edit-related-objects.png)
+
+* Vous pouvez modifier les colonnes à afficher pour les participants, comme indiqué ci-dessous.
+
+   ![Image](images/set-columns-to-display.png)
+
+* La *Historique* contient la section Objets associés configurée comme indiqué dans l’image ci-dessous.
+
+   ![Image](images/edit-related-object-in-history.png)
+
+* Vous pouvez modifier les colonnes à afficher pour l’historique, comme indiqué ci-dessous.
+
+   ![Image](images/select-columns-to-display.png)
+
+#### **Afficher les participants et l’historique d’audit pour le document Adobe Sign** {#view-participants-audit-history}
+
+* Pour afficher les participants et l’historique d’audit du document Adobe Sign, sélectionnez le lien dans la section &quot;Signature Adobe&quot; du document.
+
+   ![Image](images/view-participants-audit-history.png)
+
+* La page qui s’ouvre affiche les participants et l’historique du document Adobe Sign, comme indiqué ci-dessous.
+
+   ![Image](images/participants-and-history.png)
+
+* Affichez la piste audio pour Signature comme indiqué ci-dessous.
+
+   ![Image](images/audit-trail.png)
 
 ### Étape 3. Configuration des profils de sécurité {#security-profiles}
 
@@ -222,7 +260,7 @@ Disable Vault Overlays (disable_vault_overlays__v) est un champ partagé existan
 
 ### Étape 8. Déclarer des formats associés de document {#declare-renditions}
 
-The new rendition type called *Adobe Sign Rendition (adobe_sign_rendition__c)* is used by Vault integration to upload signed PDF documents to Adobe Sign. You must declare the Adobe Sign rendition for each document type that is eligible for Adobe Signature.
+Le nouveau type de rendu appelé *Adobe Sign Rendition (adobe_sign_rendition__c)* est utilisé par l’intégration Vault pour télécharger des documents signés par PDF vers Adobe Sign. Vous devez déclarer le format associé Adobe Sign pour chaque type de document éligible à la signature Adobe.
 
 ![Image de types de rendu](images/rendition-type.png)
 
@@ -266,7 +304,7 @@ Pour mettre à jour le cycle de vie du document, procédez comme suit :
    Le rôle d’administrateur doit être créé avec les options suivantes :
 
    * Contrôle d&#39;accès dynamique activé.
-   * Document sharing rules that include only Document Type Group, as shown in the image below.
+   * Règles de partage de document qui incluent uniquement le groupe de types de document, comme illustré dans l’image ci-dessous.
 
    ![Image de la règle de partage Adobe Sign](images/adobe-sign-sharing-rule.png)
 
@@ -299,9 +337,9 @@ Pour mettre à jour le cycle de vie du document, procédez comme suit :
 
       * Action qui modifie l’état du document en *Dans la création Adobe Sign* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
       * Action qui modifie l’état du document en *En Adobe Signature état*. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-      * Action qui modifie l’état du document en *Adobe Sign annulé* état. The name of this user action must be the same for all document types for any lifecycle. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui modifie l’état du document en *Adobe Sign annulé* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
       * Action qui appelle l’action web &quot;Adobe Sign&quot; .
-      * Action that calls the Web Action ‘Cancel Adobe Sign’. This state must have security that allowsAdobe Sign Admin role to: view document, view content, edit fields, edit relationships, download source, manage viewable rendition, and change state.
+      * Action qui appelle l’action web &quot;Annuler Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
 
       ![Image de l&#39;état du cycle de vie 2](images/lifecycle-state2.png)
 
