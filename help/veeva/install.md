@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 535c4510e876c708679d7f6a800206264a9876e2
+source-git-commit: 928bbadab28f041de2d8bc17ad8383f61033a6c0
 workflow-type: tm+mt
-source-wordcount: '3428'
+source-wordcount: '3431'
 ht-degree: 3%
 
 ---
@@ -135,7 +135,7 @@ Un objet Process Locker est créé pour verrouiller le processus d’intégratio
 
 Les objets Signature, Signatory, Signature Event et Process Locker qui font partie du package de déploiement ont la propriété &quot;Audit data changes for this object&quot; activée par défaut.
 
-**Remarque :** Pour inclure les modifications des données d&#39;enregistrement des objets de capture Vault dans les journaux d&#39;audit, activez le paramètre Modifier les données d&#39;audit. Ce paramètre est Désactivé par défaut. Une fois que vous avez activé ce paramètre et créé des enregistrements, vous ne pouvez pas le désactiver. Si ce paramètre est désactivé et qu&#39;il existe des enregistrements, seul un propriétaire de coffre peut mettre à jour le paramètre.
+**Remarque :** Vous pouvez configurer l&#39;objet de capture Vault pour enregistrer les modifications de données dans les journaux d&#39;audit en activant le paramètre Auditer les modifications de données. Ce paramètre est désactivé par défaut. Une fois que vous activez ce paramètre et créez des enregistrements, vous ne pouvez plus le désactiver. Si ce paramètre est désactivé et qu&#39;il existe des enregistrements, seul un propriétaire de coffre peut mettre à jour le paramètre.
 
 #### **Afficher les participants et l’historique de l’objet Signature** {#display-participants-history}
 
@@ -167,7 +167,7 @@ L’objet Signature qui fait partie du pack de déploiement est fourni avec le f
 
    ![Image](images/participants-and-history.png)
 
-* Affichez la piste audio pour Signature comme indiqué ci-dessous.
+* Affichez la piste d’audit pour Signature comme indiqué ci-dessous.
 
    ![Image](images/audit-trail.png)
 
