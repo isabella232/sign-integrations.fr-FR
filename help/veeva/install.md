@@ -10,9 +10,9 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 04a3e58da81c1a034318807776077d0076eec85f
+source-git-commit: ad78f32d6c418ac9c7120899831b74bec9d5620d
 workflow-type: tm+mt
-source-wordcount: '3431'
+source-wordcount: '3503'
 ht-degree: 3%
 
 ---
@@ -60,6 +60,7 @@ Pour configurer Adobe Sign pour [!DNL Vault], un nouveau groupe appelé *Groupe 
 * Mise en page des objets signataires
 * Mise en page d&#39;objet Process Locker
 * Type de rendu Adobe Sign
+* Type de rendu original
 * Signature de champ partagé __c , allow_adobe_sign_user_actions__c
 * Action web Adobe Sign
 * Annuler l’action web Adobe Sign
@@ -266,6 +267,10 @@ Le nouveau type de rendu appelé *Adobe Sign Rendition (adobe_sign_rendition__c)
 
 ![Image de types de rendu](images/edit-details-clinical-type.png)
 
+Le nouveau type de rendu appelé *Rendu d’origine (original_rendition__c)* est utilisé par l’intégration Vault comme nom du rendu qui doit être utilisé pour stocker le rendu visible d’origine si le document signé est importé en tant que rendu visible.
+
+![Image](images/original-rendition.png)
+
 ### Étape 9. Actions Web Update {#web-actions}
 
 L&#39;intégration d&#39;Adobe Sign et de Vault nécessite la création et la configuration des deux actions Web suivantes :
@@ -440,6 +445,10 @@ Un administrateur de compte Adobe Sign doit suivre les étapes ci-dessous pour s
    **Remarque :** La configuration automatique des nouveaux utilisateurs Adobe Sign ne fonctionne que si elle a été activée au niveau du compte Adobe Sign dans Adobe Sign en plus de l’activation **[!UICONTROL Configurer automatiquement les utilisateurs Sign]** pour le[!DNL Veeva Vault]Intégration d’Adobe Sign comme indiqué ci-dessous par l’administrateur du compte Adobe Sign.
 
    ![Image](images/allow-auto-provisioning.png)
+
+1. Pour configurer Adobe Sign Rendition pour qu’il s’affiche dans Veeva au lieu du rendu d’origine, cochez la case **[!UICONTROL Affichage du rendu Adobe Sign]**.
+
+   ![Image](images/edit-connection-dispplay-adobe-sign-rendition.png)
 
 1. Sélectionner **[!UICONTROL Enregistrer]** pour enregistrer votre nouvelle connexion.
 
