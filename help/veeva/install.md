@@ -10,7 +10,7 @@ solution: Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: b9d0ac0cccc8785469172fd805e7b878743c7c07
+source-git-commit: c108714c960b68342539da8e37ac88622c963ed5
 workflow-type: tm+mt
 source-wordcount: '3498'
 ht-degree: 3%
@@ -265,7 +265,7 @@ Le nouveau type de rendu appelé *Adobe Sign Rendition (adobe_sign_rendition__c)
 
 ![Image de types de rendu](images/rendition-type.png)
 
-![Image](images/edit-details-clinical-type.png)
+![Image](images/edit-details-clinical.png)
 
 Le nouveau type de rendu appelé *Rendu d’origine (original_rendition__c)* est utilisé par l’intégration Vault comme nom du rendu qui doit être utilisé pour stocker le rendu visible d’origine si le document signé est importé en tant que rendu visible.
 
