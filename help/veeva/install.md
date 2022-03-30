@@ -10,9 +10,9 @@ solution: Acrobat Sign, Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 1eafeb73f7b7055fa958b15a02148898f7c9d406
+source-git-commit: 2c2d7ebe427166222cc62c5ab8f867275a97cce9
 workflow-type: tm+mt
-source-wordcount: '3573'
+source-wordcount: '3568'
 ht-degree: 3%
 
 ---
@@ -222,7 +222,7 @@ Vous devez ajouter ce groupe de types de document pour toutes les classification
 
 ### Étape 6. Créer une configuration de rôle utilisateur {#create-user-role-setup}
 
-Une fois les cycles de vie correctement configurés, le système doit s’assurer que l’utilisateur Adobe Sign Admin est ajouté par DAC pour tous les documents éligibles au processus Adobe Acrobat Sign. Pour ce faire, créez l&#39;enregistrement de configuration de rôle d&#39;utilisateur approprié qui spécifie :
+Une fois les cycles de vie correctement configurés, le système doit s’assurer que l’utilisateur administrateur Adobe Sign est ajouté par DAC pour tous les documents éligibles au processus Adobe Acrobat Sign. Pour ce faire, créez l&#39;enregistrement de configuration de rôle d&#39;utilisateur approprié qui spécifie :
 
 * Groupe de types de document en tant que document Adobe Sign
 * Rôle d’application en tant que rôle d’administrateur Adobe Sign
@@ -239,7 +239,7 @@ Le déploiement de packs crée les deux nouveaux champs de document partagé sui
 
 ![Image](images/2-document-fields.png)
 
-Pour configurer les champs de document :
+Pour configurer des champs de document :
 
 1. Accédez à l’onglet Configuration et sélectionnez **[!UICONTROL Champs de document]** > **[!UICONTROL Champs partagés]**.
 1. Dans le champ Afficher la section , sélectionnez **[!UICONTROL Créer une section d&#39;affichage]** et affectez **[!UICONTROL Signature Adobe]** comme étiquette de section.
@@ -255,7 +255,7 @@ Pour configurer les champs de document :
 
    ![Image](images/use-shared-fields.png)
 
-1. Notez que les deux champs doivent avoir une sécurité spécifique qui permet uniquement aux membres du groupe d’administration Adobe Sign de mettre à jour leurs valeurs.
+1. Les deux champs doivent avoir une sécurité spécifique qui permet uniquement aux membres du groupe d’administration Adobe Sign de mettre à jour leurs valeurs.
 
    ![Image](images/security-overrides.png)
 

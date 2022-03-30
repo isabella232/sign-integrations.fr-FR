@@ -9,7 +9,7 @@ solution: Acrobat Sign, Adobe Sign
 role: User, Developer
 topic: Integrations
 exl-id: 39a43637-af3f-432e-a784-8f472aa86df5
-source-git-commit: 1eafeb73f7b7055fa958b15a02148898f7c9d406
+source-git-commit: 2c2d7ebe427166222cc62c5ab8f867275a97cce9
 workflow-type: tm+mt
 source-wordcount: '721'
 ht-degree: 0%
@@ -56,7 +56,7 @@ Pour envoyer un accord à l’aide d’Adobe Acrobat Sign pour Veeva :
 
    ![](images/choose-document-type.png)
 
-1. Sélectionner **[!UICONTROL Ok]** pour fermer la boîte de dialogue.
+1. Pour fermer la boîte de dialogue, sélectionnez **[!UICONTROL Ok]**.
 
 1. Sélectionner **[!UICONTROL Suivant]**.
 
@@ -117,7 +117,7 @@ Pour envoyer un accord à l’aide d’Adobe Acrobat Sign pour Veeva :
 
 1. Une fois toutes les signatures capturées et complétées dans Adobe Acrobat Sign, l’état du document dans le coffre devient [!UICONTROL Approuvé].
 
-1. Sélectionner **[!UICONTROL Fichiers document]** et développez l&#39;élément **[!UICONTROL Rendus]** dans le coffre-fort. Une fois le document approuvé, un nouveau format associé nommé &quot;Adobe Sign Format associé&quot; est automatiquement créé.
+1. Sélectionner **[!UICONTROL Fichiers document]** et développez l&#39;élément **[!UICONTROL Rendus]** dans le coffre-fort. Une fois le document approuvé, un format associé nommé &quot;Adobe Sign Format associé&quot; est automatiquement créé.
 
    ![](images/document-files.png)
 
