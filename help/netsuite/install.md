@@ -149,7 +149,7 @@ Pour déterminer le nombre d’accords envoyés pour signature :
 
    ![Recherche des types d’enregistrements](images/search-adobe-signagreements.png)
 
-1. From the **[!UICONTROL Status]** drop-down, select **[!UICONTROL Out for Signature]** and then select **[!UICONTROL Submit]**.
+1. Dans le **[!UICONTROL Statut]** , sélectionnez l’option **[!UICONTROL Émis pour signature]** , puis sélectionnez **[!UICONTROL Envoyer]**.
 
    ![Envoi pour signature](images/submit-search-foragreements.png)
 
@@ -243,7 +243,7 @@ L’offre d’intégration Adobe Sign vous permet de recevoir automatiquement le
 
    * Dans la section SuiteScript, activez les options **[!UICONTROL Client SuiteScript]** et **[!UICONTROL Serveur SuiteScript]** et acceptez les conditions d’utilisation pour les deux.
 
-1. Select **[!UICONTROL Save]**.
+1. Sélectionner **[!UICONTROL Enregistrer]**.
 
    Vos options sont définies comme indiqué sur l’image.
 
@@ -257,7 +257,7 @@ L’onglet Accord peut s’afficher avec deux types de [!DNL NetSuite] enregistr
 
 ## Enregistrements de transactions {#transrecords}
 
-Si l’accord est créé à partir d’un enregistrement de transaction, le premier document de l’enregistrement d’accord est la version PDF de l’enregistrement d’origine et le premier destinataire est l’adresse e-mail de l’enregistrement. If you don’t want the first document to be a PDF version of the record it came from, go to **[!UICONTROL Setup > Company > General Preferences > Custom Preferences sub-tab]** and disable the **[!UICONTROL Auto Attach Transaction PDF]** option. See [Setting Custom Preferences](#configure) for more information.
+Si l’accord est créé à partir d’un enregistrement de transaction, le premier document de l’enregistrement d’accord est la version PDF de l’enregistrement d’origine et le premier destinataire est l’adresse e-mail de l’enregistrement. Si vous ne souhaitez pas que le premier document soit une version PDF de l’enregistrement d’origine, accédez à **[!UICONTROL Sous-onglet Configuration > Société > Préférences générales > Préférences personnalisées]** et désactivez l&#39;option **[!UICONTROL Joindre automatiquement le PDF de transactions]** s&#39;affiche. Voir [Définition des préférences personnalisées](#configure) pour plus d’informations.
 
 Sous Préférences personnalisées, vous pouvez également activer la préférence **[!UICONTROL Utiliser le contact de transaction comme premier signataire]** si vous souhaitez que le contact de transaction principal soit automatiquement ajouté en tant que premier signataire. Lorsqu&#39;il est associé à un enregistrement de transaction, il affiche le **[!UICONTROL Accords]** et le **[!UICONTROL Send for Signature]** des boutons.
 
@@ -355,7 +355,7 @@ Maximum [!DNL NetSuite] Les rôles doivent être autorisés à utiliser Adobe Si
 
    >[!NOTE]
    >
-   >See the *[Setting Up a Permissions List for a Custom Record Type](https://system.[!DNL NetSuite].com/app/help/helpcenter.nl?fid=section_N2879931.html)* dans la boîte de dialogue [!DNL NetSuite] Centre d’aide pour plus d’informations
+   >Consultez la *[Configuration d’une liste d’autorisations pour un type d’enregistrement personnalisé](https://system.[!DNL NetSuite].com/app/help/helpcenter.nl?fid=section_N2879931.html)* dans la boîte de dialogue [!DNL NetSuite] Centre d’aide pour plus d’informations
 
    1. Sélectionnez le rôle dans la liste *Rôle*.
    1. Définir *Niveau* à **[!UICONTROL Complet]**.
@@ -602,7 +602,7 @@ Cela peut se produire pour les raisons suivantes :
 
 * La [!DNL NetSuite]/L’administrateur Adobe Sign qui a configuré OAuth a révoqué le jeton d’accès.
 * Le jeton d’accès a expiré car aucun accord n’a été envoyé à partir de [!DNL NetSuite] au cours des 60 derniers jours
-* The [!DNL NetSuite]/Adobe Sign administrator has not successfully completed the initial OAuth configuration
+* La [!DNL NetSuite]/L’administrateur Adobe Sign n’a pas terminé la configuration OAuth initiale
 
 Pour résoudre ce problème, exécutez à nouveau le processus de configuration OAuth. Pour plus d’informations, voir [Configuration d’OAuth après l’installation ou la mise à niveau](#oauth).
 
@@ -610,7 +610,7 @@ Pour résoudre ce problème, exécutez à nouveau le processus de configuration 
 
 ### Résolution des problèmes de statut du document {#resolvestatus}
 
-If [automatic status updates](#asu) are configured but the agreement status is not updating after sending agreements, try the following:
+Si [mises à jour automatiques](#asu) sont configurés mais l’état de l’accord n’est pas mis à jour après l’envoi des accords, essayez les solutions suivantes :
 
 1. Consultez le journal d’exécution du déploiement du script *Mise à jour externe d’Adobe Sign* pour voir si vous recevez des appels d’Adobe Sign comme suit :
 

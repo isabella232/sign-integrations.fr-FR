@@ -69,7 +69,7 @@ Après la mise à niveau du plug-in, accédez à **[!UICONTROL Administration]**
 1. Si vous le souhaitez, configurez le plug-in avec les paramètres suivants :
 
    1. Joindre automatiquement le PDF lors de la création d’un accord à partir d’un devis : Indiquez si vous souhaitez joindre automatiquement un PDF du devis si un [!DNL SugarCRM] L’utilisateur crée un accord EchoSign à partir du module Devis.
-   1. Gérer la liste des destinataires : Sélectionnez les modules à afficher dans le sous-panneau Destinataire du [!DNL EchoSign] Module Accords. Cela ajoute également l’attribut [!DNL EchoSign] Sous-panneau Accords pour ces modules.
+   1. Gérer la liste des destinataires : Sélectionnez les modules à afficher dans le sous-panneau Destinataire du panneau [!DNL EchoSign] Module Accords. Cela ajoute également l’attribut [!DNL EchoSign] Sous-panneau Accords pour ces modules.
    1. Ajoutez les boutons Envoyer à ces modules : Sélectionnez cette option si vous souhaitez que le [!DNL EchoSign] Bouton/action d’accord à inclure avec les actions principales du module Devis.
    1. Sélectionner **[!UICONTROL Enregistrer]** pour stocker vos paramètres.
 
