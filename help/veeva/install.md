@@ -10,9 +10,9 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 4d73ff36408283805386bd3266b683bc187d6031
+source-git-commit: aa8f965e516bacda8b4172d256da4700d479eab8
 workflow-type: tm+mt
-source-wordcount: '3568'
+source-wordcount: '3909'
 ht-degree: 3%
 
 ---
@@ -23,7 +23,7 @@ ht-degree: 3%
 
 ## Présentation {#overview}
 
-Ce document explique comment établir l’intégration d’Adobe Acrobat Sign avec [!DNL Veeva Vault] plateforme. [!DNL Veeva Vault] est une plateforme de gestion de contenu d&#39;entreprise (ECM) conçue pour les sciences de la vie. Un &quot;coffre-fort&quot; est un dépôt de contenu et de données dont l&#39;utilisation est typique pour les dépôts réglementaires, les rapports de recherche, les demandes de subventions, les marchés généraux, etc. Une seule entreprise peut avoir plusieurs &quot;coffres&quot; qui doivent être gérés séparément.
+Ce document explique comment établir l’intégration de Adobe Acrobat Sign avec [!DNL Veeva Vault] plateforme. [!DNL Veeva Vault] est une plateforme de gestion de contenu d&#39;entreprise (ECM) conçue pour les sciences de la vie. Un &quot;coffre-fort&quot; est un dépôt de contenu et de données dont l&#39;utilisation est typique pour les dépôts réglementaires, les rapports de recherche, les demandes de subventions, les marchés généraux, etc. Une seule entreprise peut avoir plusieurs &quot;coffres&quot; qui doivent être gérés séparément.
 
 Les étapes générales pour terminer l’intégration sont les suivantes :
 
@@ -59,15 +59,17 @@ Pour configurer Adobe Acrobat Sign pour [!DNL Vault], un nouveau groupe appelé 
 * Mise en page de l’objet Signature Event
 * Mise en page des objets signataires
 * Mise en page d&#39;objet Process Locker
+* Mise en page d&#39;objet Journal des tâches d&#39;intégration Adobe Sign
 * Type de rendu Adobe Sign
 * Type de rendu original
-* Signature de champ partagé __c , allow_adobe_sign_user_actions__c
+* Signature de champ partagée__c
 * Action web Adobe Sign
 * Annuler l’action web Adobe Sign
 * Jeu d’autorisations Actions d’administrateur Adobe Sign
 * Profil de sécurité du profil d’intégration Adobe Sign
 * Rôle d’application Rôle d’administrateur Adobe Sign
 * Groupe de types de document &quot;Document Adobe Sign&quot;
+* Objet journal des tâches d’intégration Adobe Sign
 
 #### Objet Signature {#signature-object}
 
@@ -87,6 +89,9 @@ L’objet Signature est créé pour stocker les informations relatives à l’ac
 | cancelation_date__c | Date de résiliation | DateHeure | Contient la date à laquelle l’accord a été annulé. |
 | completed_date__c | Date de fin | DateHeure | Contient la date à laquelle l’accord a été complété. |
 | viewable_rendition_used__c | Format associé visible utilisé | Booléen | Indicateur qui indique si le rendu visible a été envoyé pour signature. (par défaut, elle est vraie) |
+| plugin_version__c | Version du module externe | Texte (10) | Il est utilisé pour permettre le traitement approprié de tous les accords créés avant le déploiement d’une nouvelle version 4.0. Remarque : Une fois la version 4.0 de l’application web personnalisée déployée, ce champ est défini sur 4.0 à chaque création d’un enregistrement de signature. |
+| external_environment__c | Environnement externe | Texte (20) | Contient le nom de l’environnement Adobe Sign dans lequel l’accord a été créé. |
+
 
 ![Image des détails de l’objet de signature](images/signature-object-details.png)
 
@@ -99,9 +104,9 @@ L’objet signataire est créé pour stocker des informations liées aux partici
 | Champ | Libellé | Type | Description |
 | --- | --- | ---| --- | 
 | email__c | E-mail | Chaîne (120) | Contient l’ID d’accord unique Adobe Acrobat Sign. |
-| id_externe__c | ID du participant | Chaîne (80) | Contient l’identifiant unique du participant Adobe Acrobat Sign. |
-| name__v | Nom | Chaîne (128) | Contient le nom du participant Adobe Acrobat Sign. |
-| order__c | Ordre | Numéro | Contient le numéro de commande du participant à l’accord Adobe Acrobat Sign. |
+| id_externe__c | ID du participant | Chaîne (80) | Contient l’identifiant unique du participant Adobe Acrobat Sign |
+| name__v | Nom | Chaîne (128) | Contient le nom du participant Adobe Acrobat Sign |
+| order__c | Ordre | Numéro | Contient le numéro de commande du participant à l’accord Adobe Acrobat Sign |
 | role__c | Rôle | Chaîne (30) | Contient le rôle du participant à l’accord Adobe Acrobat Sign |
 | signature__c | Signature | Objet (signature) | Contient la référence à l’enregistrement parent de la signature |
 | signature_status__c | État de signature | Chaîne (100) | Contient le statut du participant à l’accord Adobe Acrobat Sign. |
@@ -124,19 +129,40 @@ Champs d’objet Signature Event
 | event_type__c | Type d&#39;événement | Chaîne | Contient le type de l’événement Adobe Acrobat Sign |
 | name__v | Nom | Chaîne | Nom d&#39;événement généré automatiquement |
 | participant_comment__c | Commentaire du participant | Chaîne | Contient le commentaire du participant à Adobe Acrobat Sign, le cas échéant. |
-| participant_email__c | Adresse él. du participant | Chaîne | Contient l’adresse électronique du participant à Adobe Acrobat Sign. |
+| participant_email__c | Adresse él. du participant | Chaîne | Contient l’adresse e-mail du participant Adobe Acrobat Sign |
 | participant_role__c | Rôle de participant | Chaîne | Contient le rôle du participant Adobe Acrobat Sign. |
 | signature__c | Signature | Objet (signature) | Contient la référence à l’enregistrement parent de la signature |
+| id_externe__c | ID externe | Texte (200) | Contient l’identificateur d’événement d’accord généré par Adobe Sign. |
 
 ![Image](images/signature-event-object-details.png)
 
 #### Objet Process Locker {#process-locker}
 
-Un objet Process Locker est créé pour verrouiller le processus d’intégration d’Adobe Acrobat Sign. Aucun champ personnalisé n’est requis.
+Un objet Process Locker est créé pour verrouiller le processus d’intégration de Adobe Acrobat Sign. Aucun champ personnalisé n’est requis.
 
 ![Image des détails des événements de signature](images/process-locker-details.png)
 
-Les objets Signature, Signatory, Signature Event et Process Locker qui font partie du package de déploiement ont la propriété &quot;Audit data changes for this object&quot; activée par défaut.
+#### Objet journal des tâches d’intégration Adobe Sign {#task-log}
+
+Création du journal des tâches d’intégration Adobe Sign (as_int_task_log__c). Il s’agit d’un objet de volume élevé utilisé pour suivre l’exécution de AgreementsEventsSynchronizerJob et AgreementsEventsProcessingJob.
+AgreementsEventsSynchronizerJob : Cette tâche permet de s’assurer que tous les événements d’accord manquants dans Adobe Sign sont créés en tant qu’événements de signature actifs dans Vault pour toutes les signatures créées dans Vault au cours des N derniers jours.
+AgreementsEventsProcessingJob : Cette tâche garantit que tous les documents comportant des enregistrements d’événement de signature actifs sont traités en fonction du type d’événement.
+
+Champs d’objet du journal des tâches d’intégration Adobe Sign
+
+| Champ | Libellé | Type | Description |
+| --- | --- | ---| --- | 
+| start_date__c | Date de début | DateHeure | Date de début de tâche |
+| end_date__c | Date de fin | DateHeure | Date de fin de tâche |
+| task_status__c | État de tâche | Liste déroulante | Contient le statut de la tâche : Terminé (task_completed__c) Terminé avec des erreurs (task_completed_with_errors__c) Échec (task_failed__c) |
+| task_type__c | Type de tâche | Liste déroulante | Contient le type de tâche : Synchronisation des événements d’accord (agreements_events_sync__c) Traitement des événements d’accord (agreements_events_processing__c) |
+| messages__c | Message | Long (32000) | Contient le message de tâche |
+
+![Image des détails des objets du journal des tâches](images/task-log.png)
+
+![Image des champs d&#39;objet du journal des tâches](images/task-log-fields.png)
+
+Les objets Signature, Signataire, Événement de signature, Outil de verrouillage de processus et Journal des tâches qui font partie du pack de déploiement ont la propriété &quot;Auditer les modifications des données pour cet objet&quot; activée par défaut.
 
 **Remarque :** Vous pouvez configurer l&#39;objet de capture Vault pour enregistrer les modifications de données dans les journaux d&#39;audit en activant le paramètre Auditer les modifications de données. Ce paramètre est désactivé par défaut. Une fois que vous activez ce paramètre et créez des enregistrements, vous ne pouvez plus le désactiver. Si ce paramètre est désactivé et qu&#39;il existe des enregistrements, seul un propriétaire de coffre peut mettre à jour le paramètre.
 
@@ -187,7 +213,7 @@ Vous devez mettre à jour le groupe d’administrateurs Adobe Sign (créé à l�
 
 ### Étape 4. Créer un utilisateur {#create-user}
 
-L’utilisateur du compte système Vault de l’intégration Adobe Acrobat Sign doit :
+L&#39;utilisateur du compte système Vault de l&#39;intégration Adobe Acrobat Sign doit :
 
 * Avoir un profil d’intégration Adobe Sign
 * Avoir un profil de sécurité
@@ -210,7 +236,7 @@ Lorsque vous déployez le package Adobe Acrobat Sign, il crée un enregistrement
 
 ![Image de groupes de types de documents](images/document-type-groups.png)
 
-Vous devez ajouter ce groupe de types de document pour toutes les classifications de documents éligibles au processus Adobe Acrobat Sign. Dans la mesure où la propriété de groupe de types de documents n’est héritée ni d’un type à un sous-type ni d’un sous-type à un niveau de classification, elle doit être définie pour chaque classification de document éligible pour Adobe Acrobat Sign.
+Vous devez ajouter ce groupe de types de document pour toutes les classifications de documents éligibles au traitement Adobe Acrobat Sign. Dans la mesure où la propriété de groupe de types de documents n’est héritée ni d’un type à un sous-type ni d’un sous-type à un niveau de classification, elle doit être définie pour chaque classification de document éligible pour Adobe Acrobat Sign.
 
 ![Image des détails de modification du document](images/document-edit-details.png)
 
@@ -232,12 +258,11 @@ Une fois les cycles de vie correctement configurés, le système doit s’assure
 
 ### Étape 7. Configurer les champs de document {#create-fields}
 
-Le déploiement de packs crée les deux nouveaux champs de document partagé suivants, qui sont requis pour établir l’intégration :
+Le déploiement du pack crée les nouveaux champs de document partagé suivants, qui sont requis pour établir l’intégration :
 
 * Signature (signature__c)
-* Autoriser les actions utilisateur Adobe Sign (allow_adobe_sign_user_actions__c)
 
-![Image](images/2-document-fields.png)
+![Image](images/document-fields.png)
 
 Pour configurer des champs de document :
 
@@ -246,8 +271,8 @@ Pour configurer des champs de document :
 
    ![Image](images/create-display-section.png)
 
-1. Pour les deux champs de document partagés (signature__c et allow_adobe_sign_user_actions__c), mettez à jour la section de l’interface utilisateur avec **[!UICONTROL Signature Adobe]** comme libellé de section.
-1. Ajoutez les trois champs partagés à tous les types de documents éligibles pour la signature Adobe Acrobat. Pour ce faire, dans la page Document de base, sélectionnez **[!UICONTROL Ajouter]** > **[!UICONTROL Champ partagé existant]** dans le coin supérieur droit.
+1. Pour les champs de document partagés (signature__c), mettez à jour la section de l’interface utilisateur avec **[!UICONTROL Signature Adobe]** comme libellé de section.
+1. Ajoutez les deux champs partagés à tous les types de documents éligibles pour la signature Adobe Acrobat. Pour ce faire, dans la page Document de base, sélectionnez **[!UICONTROL Ajouter]** > **[!UICONTROL Champ partagé existant]** dans le coin supérieur droit.
 
    ![Image](images/create-document-fields.png)
 
@@ -263,7 +288,7 @@ Disable Vault Overlays (disable_vault_overlays__v) est un champ partagé existan
 
 ### Étape 8. Déclarer des formats associés de document {#declare-renditions}
 
-Le nouveau type de rendu appelé *Adobe Sign Rendition (adobe_sign_rendition__c)* est utilisé par l’intégration Vault pour télécharger des documents de mot de PDF signés vers Adobe Acrobat Sign. Vous devez déclarer le rendu Adobe Sign pour chaque type de document éligible à la signature Adobe Acrobat.
+Le nouveau type de rendu appelé *Adobe Sign Rendition (adobe_sign_rendition__c)* est utilisé par l’intégration Vault pour télécharger des documents signés par PDF vers Adobe Acrobat Sign. Vous devez déclarer le rendu Adobe Sign pour chaque type de document éligible à la signature Adobe Acrobat.
 
 ![Image de types de rendu](images/rendition-type.png)
 
@@ -335,39 +360,61 @@ Pour mettre à jour le cycle de vie du document, procédez comme suit :
 
    * **Avant signature Adobe** (Révisé) : Il s’agit d’un nom d’espace réservé pour l’état à partir duquel le document peut être envoyé à Adobe Acrobat Sign. En fonction du type de document, il peut s’agir de l’état Brouillon ou Révisé. Le libellé de l’état du document peut être personnalisé selon les exigences du client. Avant que l’Adobe Signature ne définisse les deux actions utilisateur suivantes :
 
-      * Action qui modifie l’état du document en *Dans Adobe Sign Draft* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui modifie l’état du document en *Dans Adobe Sign Draft* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie.
       * Action qui appelle l’action Web &quot;Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
 
       ![Image de l&#39;état du cycle de vie 1](images/lifecycle-state1.png)
 
-   * **Dans Adobe Sign Draft**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est déjà téléchargé vers Adobe Acrobat Sign et que son accord est à l’état BROUILLON. C&#39;est un état requis. Cet état doit définir les cinq actions utilisateur suivantes :
+      * Modifier *Révisé* Sécurité atomique par paramètre *Dans Adobe Sign Draft* par défaut sur Masqué et Exécuter uniquement pour *Rôle d’administrateur Adobe Sign*.
+      **Remarque :** Si *Rôle d’administrateur Adobe Sign* rôle ne fait pas partie de *Sécurité atomique : Actions utilisateur*, Ajouter **[!UICONTROL Rôle d’administrateur Adobe Sign]** en sélectionnant **[!UICONTROL Modifier]**> **[!UICONTROL Rôle personnalisé]**. Ensuite, ajoutez **Rôle d’administrateur Adobe Sign** pour *Révisé* Etat.
 
-      * Action qui modifie l’état du document en *Dans la création Adobe Sign* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-      * Action qui modifie l’état du document en *En Adobe Signature état*. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-      * Action qui modifie l’état du document en *Adobe Sign annulé* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-      * Action qui appelle l’action web &quot;Adobe Sign&quot; .
-      * Action qui appelle l’action web &quot;Annuler Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
+      ![Image](images/lifecycle-state-reviewed.png)
+      ![Image](images/lifecycle-state-reviewed-1.png)
+      ![Image](images/lifecycle-state-reviewed-2.png)
+
+   * **Dans Adobe Sign Draft**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est déjà chargé dans Adobe Acrobat Sign et que son accord est à l’état BROUILLON . C&#39;est un état requis. Cet état doit définir les cinq actions utilisateur suivantes :
+
+      * Action qui modifie l’état du document en *Dans la création Adobe Sign* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie.
+      * Action qui modifie l’état du document en *En Adobe Signature état*. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie.
+      * Action qui modifie l’état du document en *Adobe Sign annulé* état. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie.
+      * Action qui appelle l&#39;action Web *Adobe Sign*.
+      * Action qui appelle l&#39;action Web *Annuler Adobe Sign*. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
 
       ![Image de l&#39;état du cycle de vie 2](images/lifecycle-state2.png)
 
+      * Modifier *Dans Adobe Sign Draft* sécurité atomique d&#39;état : actions *Adobe Sign annulé*, *Dans la création Adobe Sign*, *En Adobe Signature* doit être masqué pour tout le monde, à l’exception du rôle d’administrateur Adobe Sign.
+      **Remarque :** Si *Rôle d’administrateur Adobe Sign* ne fait pas partie de *Sécurité atomique : Actions utilisateur*, ajoutez **[!UICONTROL Rôle d’administrateur Adobe Sign]** en sélectionnant **[!UICONTROL Modifier]** > **[!UICONTROL Rôle personnalisé]**. Ensuite, ajoutez **[!UICONTROL Rôle d’administrateur Adobe Sign]** rôle pour *Dans Adobe Sign Draft* Etat.
+
+      ![Image](images/atomic-security.png)
+
    * **Dans la création Adobe Sign**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est déjà téléchargé vers Adobe Acrobat Sign et que son accord est à l’état CRÉATION ou DOCUMENTS_NOT_YET_PROCESSED . C&#39;est un état requis. Cet état doit comporter les quatre actions utilisateur suivantes :
 
-      * Action qui remplace l’état du document par l’état Adobe Sign Annulé . Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-      * Action qui modifie l’état du document en Adobe Signature. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui remplace l’état du document par l’état Adobe Sign Annulé . Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie.
+      * Action qui modifie l’état du document en Adobe Signature. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie.
       * Action qui appelle l’action web &quot;Adobe Sign&quot;
       * Action qui appelle l’action web &quot;Annuler Adobe Sign&quot;. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
 
       ![Image de l&#39;état du cycle de vie 3](images/lifecycle-state3.png)
 
+      * Modifier *Dans la création Adobe Sign* sécurité atomique d&#39;état : actions *Adobe Sign annulé* et *En Adobe Signature* doit être masqué pour tout le monde, à l’exception du rôle d’administrateur Adobe Sign.
+      **Remarque :** Si *Rôle d’administrateur Adobe Sign* ne fait pas partie de *Sécurité atomique : Actions utilisateur*, ajoutez **[!UICONTROL Rôle d’administrateur Adobe Sign]** en sélectionnant **[!UICONTROL Modifier]** > **[!UICONTROL Rôle personnalisé]**. Ensuite, ajoutez **[!UICONTROL Rôle d’administrateur Adobe Sign]** rôle pour *Dans la création Adobe Sign* Etat.
+
+      ![Image](images/adobe-sing-authoring.png)
+
    * **En Adobe Signature**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est chargé dans Adobe Acrobat Sign et que son accord est déjà envoyé aux participants (état OUT_FOR_SIGNATURE ou OUT_FOR_APPROVAL). C&#39;est un état requis. Cet état doit comporter les cinq actions utilisateur suivantes :
 
-      * Action qui remplace l’état du document par l’état Adobe Sign Annulé . L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-      * Action qui remplace l’état du document par l’état Adobe Sign rejeté. L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
-      * Action qui remplace l’état du document par l’état Signé par l’Adobe. L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Toutefois, le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie. Si nécessaire, les critères pour cette action peuvent être définis sur &quot;Autoriser les actions utilisateur Adobe Sign est égal à Oui&quot;.
+      * Action qui remplace l’état du document par l’état Adobe Sign Annulé . L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie.
+      * Action qui remplace l’état du document par l’état Adobe Sign rejeté. L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie.
+      * Action qui remplace l’état du document par l’état Signé par l’Adobe. L’état cible de cette action peut être n’importe quelle exigence du client et il peut être différent pour différents types. Toutefois, le nom de cette action utilisateur doit être le même pour tous les types de documents, quel que soit leur cycle de vie.
       * Action qui appelle l&#39;action Web *Adobe Sign*.
       * Action qui appelle Action Web *Annuler Adobe Sign*. Cet état doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher le document, afficher le contenu, modifier les champs, modifier les relations, télécharger la source, gérer le rendu visible et modifier l’état.
 
       ![Image de l&#39;état du cycle de vie 4](images/lifecycle-state4.png)
+
+      * Modifier *En Adobe Signature* sécurité atomique d&#39;état : actions *Adobe Sign annulé*, *Adobe Sign rejeté*, et *Adobe signé* doit être masqué pour tout le monde, à l’exception du rôle d’administrateur Adobe Sign.
+      **Remarque :** Si *Rôle d’administrateur Adobe Sign* ne fait pas partie de *Sécurité atomique : Actions utilisateur*, ajoutez **[!UICONTROL Rôle d’administrateur Adobe Sign]** en sélectionnant **[!UICONTROL Modifier]** > **[!UICONTROL Rôle personnalisé]**. Ensuite, ajoutez **[!UICONTROL Rôle d’administrateur Adobe Sign]** rôle pour *En Adobe Signature* Etat.
+
+      ![Image](images/in-adobe-signing-2.png)
 
       * **Adobe signé (approuvé)**: Il s’agit d’un nom d’espace réservé pour l’état qui indique que le document est chargé dans Adobe Acrobat Sign et que son accord est terminé (état SIGNÉ ou APPROUVÉ). Il s&#39;agit d&#39;un état obligatoire qui peut être un état de cycle de vie existant, comme Approuvé.
 Cet état ne nécessite aucune action de l’utilisateur. Il doit disposer d’une sécurité qui permet au rôle d’administrateur Adobe Sign de : afficher des documents, afficher du contenu et modifier des champs.
@@ -394,12 +441,12 @@ Vous devez définir les autorisations appropriées pour chaque rôle d&#39;utili
 
 ![Image](images/create-cancel-message.png)
 
-## Connect [!DNL Veeva Vault] vers Adobe Acrobat Sign à l’aide de middleware {#connect-middleware}
+## Connect [!DNL Veeva Vault] vers Adobe Acrobat Sign avec middleware {#connect-middleware}
 
 Après avoir terminé la configuration de [!DNL Veeva Vault] et le compte Administrateur Adobe Acrobat Sign, l’administrateur doit créer une connexion entre les deux comptes à l’aide du middleware. La [!DNL Veeva Vault] et la connexion au compte Adobe Acrobat Sign est initiée par l’identité Adobe Acrobat Sign, puis elle est utilisée pour stocker le fichier[!DNL Veeva Vault] identité.
 Pour la sécurité et la stabilité du système, l’administrateur doit utiliser un [!DNL Veeva Vault] compte système/service/utilitaire, tel que `adobe.for.veeva@xyz.com`, au lieu d’un compte d’utilisateur personnel, tel que `bob.smith@xyz.com`.
 
-Un administrateur de compte Adobe Acrobat Sign doit suivre les étapes ci-dessous pour se connecter [!DNL Veeva Vault] vers Adobe Acrobat Sign à l’aide du middleware :
+Un administrateur de compte Adobe Acrobat Sign doit suivre les étapes ci-dessous pour se connecter [!DNL Veeva Vault] vers Adobe Acrobat Sign à l’aide de middleware :
 
 1. Accédez à l’onglet [Adobe Acrobat Sign pour [!DNL Veeva Vault] Page Accueil](https://static.adobesigncdn.com/veevavaultintsvc/index.html).
 1. Sélectionner **[!UICONTROL Connexion]** dans le coin supérieur droit.
