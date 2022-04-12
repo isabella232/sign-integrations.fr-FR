@@ -10,7 +10,7 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: aa8f965e516bacda8b4172d256da4700d479eab8
+source-git-commit: 1026d696587b898b6e1132ca1a69642d799dcf1d
 workflow-type: tm+mt
 source-wordcount: '3909'
 ht-degree: 3%
@@ -23,7 +23,7 @@ ht-degree: 3%
 
 ## Présentation {#overview}
 
-Ce document explique comment établir l’intégration de Adobe Acrobat Sign avec [!DNL Veeva Vault] plateforme. [!DNL Veeva Vault] est une plateforme de gestion de contenu d&#39;entreprise (ECM) conçue pour les sciences de la vie. Un &quot;coffre-fort&quot; est un dépôt de contenu et de données dont l&#39;utilisation est typique pour les dépôts réglementaires, les rapports de recherche, les demandes de subventions, les marchés généraux, etc. Une seule entreprise peut avoir plusieurs &quot;coffres&quot; qui doivent être gérés séparément.
+Ce document explique comment établir l’intégration d’Adobe Acrobat Sign avec [!DNL Veeva Vault] plateforme. [!DNL Veeva Vault] est une plateforme de gestion de contenu d&#39;entreprise (ECM) conçue pour les sciences de la vie. Un &quot;coffre-fort&quot; est un dépôt de contenu et de données dont l&#39;utilisation est typique pour les dépôts réglementaires, les rapports de recherche, les demandes de subventions, les marchés généraux, etc. Une seule entreprise peut avoir plusieurs &quot;coffres&quot; qui doivent être gérés séparément.
 
 Les étapes générales pour terminer l’intégration sont les suivantes :
 
@@ -92,7 +92,6 @@ L’objet Signature est créé pour stocker les informations relatives à l’ac
 | plugin_version__c | Version du module externe | Texte (10) | Il est utilisé pour permettre le traitement approprié de tous les accords créés avant le déploiement d’une nouvelle version 4.0. Remarque : Une fois la version 4.0 de l’application web personnalisée déployée, ce champ est défini sur 4.0 à chaque création d’un enregistrement de signature. |
 | external_environment__c | Environnement externe | Texte (20) | Contient le nom de l’environnement Adobe Sign dans lequel l’accord a été créé. |
 
-
 ![Image des détails de l’objet de signature](images/signature-object-details.png)
 
 #### Objet signataire {#signatory-object}
@@ -104,12 +103,12 @@ L’objet signataire est créé pour stocker des informations liées aux partici
 | Champ | Libellé | Type | Description |
 | --- | --- | ---| --- | 
 | email__c | E-mail | Chaîne (120) | Contient l’ID d’accord unique Adobe Acrobat Sign. |
-| id_externe__c | ID du participant | Chaîne (80) | Contient l’identifiant unique du participant Adobe Acrobat Sign |
-| name__v | Nom | Chaîne (128) | Contient le nom du participant Adobe Acrobat Sign |
+| id_externe__c | ID du participant | Chaîne (80) | Contient l’identifiant unique du participant Adobe Acrobat Sign. |
+| name__v | Nom | Chaîne (128) | Contient le nom du participant Adobe Acrobat Sign. |
 | order__c | Ordre | Numéro | Contient le numéro de commande du participant à l’accord Adobe Acrobat Sign |
 | role__c | Rôle | Chaîne (30) | Contient le rôle du participant à l’accord Adobe Acrobat Sign |
 | signature__c | Signature | Objet (signature) | Contient la référence à l’enregistrement parent de la signature |
-| signature_status__c | État de signature | Chaîne (100) | Contient le statut du participant à l’accord Adobe Acrobat Sign. |
+| signature_status__c | État de signature | Chaîne (100) | Contient le statut du participant à l’accord Adobe Acrobat Sign |
 | user__c | Utilisateur | Objet (Utilisateur) | Contient la référence à l’enregistrement d’utilisateur du signataire si le participant est un utilisateur Vault |
 
 ![Image des détails du signataire](images/signatory-object-details.png)
@@ -124,13 +123,13 @@ Champs d’objet Signature Event
 | --- | --- | ---| --- | 
 | acting_user_email__c | Adresse él. du responsable de l’action | Chaîne | Contient l’adresse e-mail de l’utilisateur Adobe Acrobat Sign qui a exécuté l’action à l’origine de la génération de l’événement |
 | acting_user_name__c | Nom d&#39;utilisateur intérimaire | Chaîne | Contient le nom de l’utilisateur Adobe Acrobat Sign qui a exécuté l’action à l’origine de la génération de l’événement |
-| description__c | Description | Chaîne | Contient la description de l’événement Adobe Acrobat Sign. |
-| event_date__c | Date de l’événement | DateHeure | Contient la date et l’heure de l’événement Adobe Acrobat Sign. |
+| description__c | Description | Chaîne | Contient la description de l’événement Adobe Acrobat Sign |
+| event_date__c | Date de l’événement | DateHeure | Contient la date et l’heure de l’événement Adobe Acrobat Sign |
 | event_type__c | Type d&#39;événement | Chaîne | Contient le type de l’événement Adobe Acrobat Sign |
 | name__v | Nom | Chaîne | Nom d&#39;événement généré automatiquement |
-| participant_comment__c | Commentaire du participant | Chaîne | Contient le commentaire du participant à Adobe Acrobat Sign, le cas échéant. |
-| participant_email__c | Adresse él. du participant | Chaîne | Contient l’adresse e-mail du participant Adobe Acrobat Sign |
-| participant_role__c | Rôle de participant | Chaîne | Contient le rôle du participant Adobe Acrobat Sign. |
+| participant_comment__c | Commentaire du participant | Chaîne | Contient le commentaire du participant Adobe Acrobat Sign, le cas échéant |
+| participant_email__c | Adresse él. du participant | Chaîne | Contient l’adresse électronique du participant à Adobe Acrobat Sign. |
+| participant_role__c | Rôle de participant | Chaîne | Contient le rôle du participant Adobe Acrobat Sign |
 | signature__c | Signature | Objet (signature) | Contient la référence à l’enregistrement parent de la signature |
 | id_externe__c | ID externe | Texte (200) | Contient l’identificateur d’événement d’accord généré par Adobe Sign. |
 
@@ -138,7 +137,7 @@ Champs d’objet Signature Event
 
 #### Objet Process Locker {#process-locker}
 
-Un objet Process Locker est créé pour verrouiller le processus d’intégration de Adobe Acrobat Sign. Aucun champ personnalisé n’est requis.
+Un objet Process Locker est créé pour verrouiller le processus d’intégration d’Adobe Acrobat Sign. Aucun champ personnalisé n’est requis.
 
 ![Image des détails des événements de signature](images/process-locker-details.png)
 
@@ -151,7 +150,7 @@ AgreementsEventsProcessingJob : Cette tâche garantit que tous les documents com
 Champs d’objet du journal des tâches d’intégration Adobe Sign
 
 | Champ | Libellé | Type | Description |
-| --- | --- | ---| --- | 
+|---|---|---|---| 
 | start_date__c | Date de début | DateHeure | Date de début de tâche |
 | end_date__c | Date de fin | DateHeure | Date de fin de tâche |
 | task_status__c | État de tâche | Liste déroulante | Contient le statut de la tâche : Terminé (task_completed__c) Terminé avec des erreurs (task_completed_with_errors__c) Échec (task_failed__c) |
@@ -213,7 +212,7 @@ Vous devez mettre à jour le groupe d’administrateurs Adobe Sign (créé à l�
 
 ### Étape 4. Créer un utilisateur {#create-user}
 
-L&#39;utilisateur du compte système Vault de l&#39;intégration Adobe Acrobat Sign doit :
+L’utilisateur du compte système Vault de l’intégration Adobe Acrobat Sign doit :
 
 * Avoir un profil d’intégration Adobe Sign
 * Avoir un profil de sécurité
@@ -236,7 +235,7 @@ Lorsque vous déployez le package Adobe Acrobat Sign, il crée un enregistrement
 
 ![Image de groupes de types de documents](images/document-type-groups.png)
 
-Vous devez ajouter ce groupe de types de document pour toutes les classifications de documents éligibles au traitement Adobe Acrobat Sign. Dans la mesure où la propriété de groupe de types de documents n’est héritée ni d’un type à un sous-type ni d’un sous-type à un niveau de classification, elle doit être définie pour chaque classification de document éligible pour Adobe Acrobat Sign.
+Vous devez ajouter ce groupe de types de document pour toutes les classifications de documents éligibles au traitement Adobe Acrobat Sign. Etant donné que la propriété de groupe de types de documents n’est héritée ni d’un type à un sous-type ni d’un sous-type à un niveau de classification, elle doit être définie pour chaque classification de document éligible à Adobe Acrobat Sign.
 
 ![Image des détails de modification du document](images/document-edit-details.png)
 
@@ -441,12 +440,12 @@ Vous devez définir les autorisations appropriées pour chaque rôle d&#39;utili
 
 ![Image](images/create-cancel-message.png)
 
-## Connect [!DNL Veeva Vault] vers Adobe Acrobat Sign avec middleware {#connect-middleware}
+## Connect [!DNL Veeva Vault] vers Adobe Acrobat Sign à l’aide de middleware {#connect-middleware}
 
 Après avoir terminé la configuration de [!DNL Veeva Vault] et le compte Administrateur Adobe Acrobat Sign, l’administrateur doit créer une connexion entre les deux comptes à l’aide du middleware. La [!DNL Veeva Vault] et la connexion au compte Adobe Acrobat Sign est initiée par l’identité Adobe Acrobat Sign, puis elle est utilisée pour stocker le fichier[!DNL Veeva Vault] identité.
 Pour la sécurité et la stabilité du système, l’administrateur doit utiliser un [!DNL Veeva Vault] compte système/service/utilitaire, tel que `adobe.for.veeva@xyz.com`, au lieu d’un compte d’utilisateur personnel, tel que `bob.smith@xyz.com`.
 
-Un administrateur de compte Adobe Acrobat Sign doit suivre les étapes ci-dessous pour se connecter [!DNL Veeva Vault] vers Adobe Acrobat Sign à l’aide de middleware :
+Un administrateur de compte Adobe Acrobat Sign doit suivre les étapes ci-dessous pour se connecter [!DNL Veeva Vault] vers Adobe Acrobat Sign à l’aide du middleware :
 
 1. Accédez à l’onglet [Adobe Acrobat Sign pour [!DNL Veeva Vault] Page Accueil](https://static.adobesigncdn.com/veevavaultintsvc/index.html).
 1. Sélectionner **[!UICONTROL Connexion]** dans le coin supérieur droit.
@@ -491,7 +490,7 @@ Un administrateur de compte Adobe Acrobat Sign doit suivre les étapes ci-dessou
 
 1. Pour autoriser la configuration automatique des utilisateurs dans Adobe Acrobat Sign, cochez la case **[!UICONTROL Configurer automatiquement les utilisateurs Sign]**.
 
-   **Remarque :** La configuration automatique des nouveaux utilisateurs d’Adobe Acrobat Sign ne fonctionne que si elle a été activée au niveau du compte Adobe Acrobat Sign dans Adobe Acrobat Sign en plus de l’activation **[!UICONTROL Configurer automatiquement les utilisateurs Sign]** pour le[!DNL Veeva Vault] Intégration d’Adobe Acrobat Sign comme indiqué ci-dessous par l’administrateur du compte Adobe Acrobat Sign.
+   **Remarque :** La configuration automatique des nouveaux utilisateurs Adobe Acrobat Sign ne fonctionne que si elle a été activée au niveau du compte Adobe Acrobat Sign dans Adobe Acrobat Sign en plus de l’activation **[!UICONTROL Configurer automatiquement les utilisateurs Sign]** pour le[!DNL Veeva Vault] Intégration de Adobe Acrobat Sign comme indiqué ci-dessous par l’administrateur du compte Adobe Acrobat Sign.
 
    ![Image](images/allow-auto-provisioning.png)
 
