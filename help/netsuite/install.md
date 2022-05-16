@@ -8,9 +8,9 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 378cac01-87c9-4288-8839-482121d49402
-source-git-commit: 4d73ff36408283805386bd3266b683bc187d6031
+source-git-commit: 0577f30c35a348174bed27c6eb309fce43f03eca
 workflow-type: tm+mt
-source-wordcount: '4870'
+source-wordcount: '4871'
 ht-degree: 35%
 
 ---
@@ -243,7 +243,7 @@ L’offre d’intégration Adobe Sign vous permet de recevoir automatiquement le
 
    * Dans la section SuiteScript, activez les options **[!UICONTROL Client SuiteScript]** et **[!UICONTROL Serveur SuiteScript]** et acceptez les conditions d’utilisation pour les deux.
 
-1. Sélectionner **[!UICONTROL Enregistrer]**.
+1. Sélectionnez **[!UICONTROL Enregistrer]**.
 
    Vos options sont définies comme indiqué sur l’image.
 
@@ -312,7 +312,7 @@ Pour déployer le fichier *Accords* et le sous-onglet *Send for Signature* pour 
 
    * Avec le **[!UICONTROL Audience]** (actif par défaut), sélectionnez les rôles ou utilisateurs spécifiques auxquels vous souhaitez accorder l’accès. Si vous souhaitez accorder l’accès à tous les rôles et utilisateurs, activez les options **[!UICONTROL Tout sélectionner]** correspondantes.
 
-   * Sélectionner **[!UICONTROL Enregistrer]**. Lorsque la confirmation de modification s’affiche, sélectionnez **[!UICONTROL Retour]**.
+   * Sélectionnez **[!UICONTROL Enregistrer]**. Lorsque la confirmation de modification s’affiche, sélectionnez **[!UICONTROL Retour]**.
 
 
 1. sélectionner **[!UICONTROL Liste]** en haut de la page Déploiement du script pour revenir à l’onglet *Scripts* page de liste.
@@ -355,7 +355,7 @@ Maximum [!DNL NetSuite] Les rôles doivent être autorisés à utiliser Adobe Si
 
    >[!NOTE]
    >
-   >Consultez la *[Configuration d’une liste d’autorisations pour un type d’enregistrement personnalisé](https://system.[!DNL NetSuite].com/app/help/helpcenter.nl?fid=section_N2879931.html)* dans la boîte de dialogue [!DNL NetSuite] Centre d’aide pour plus d’informations
+   >Consultez la *[Configuration d’une liste d’autorisations pour un type d’enregistrement personnalisé](https://system.[!DNL NetSuite].com/app/help/helpcenter.nl?fid=section_N2879931.html)* dans le Centre d’aide NetSuite pour plus d’informations
 
    1. Sélectionnez le rôle dans la liste *Rôle*.
    1. Définir *Niveau* à **[!UICONTROL Complet]**.
