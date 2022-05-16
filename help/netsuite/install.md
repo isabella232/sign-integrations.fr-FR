@@ -8,10 +8,10 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 378cac01-87c9-4288-8839-482121d49402
-source-git-commit: 0577f30c35a348174bed27c6eb309fce43f03eca
+source-git-commit: c54f848d7832e831dc10c8069ac572226f0b31e8
 workflow-type: tm+mt
-source-wordcount: '4871'
-ht-degree: 35%
+source-wordcount: '4873'
+ht-degree: 36%
 
 ---
 
@@ -21,7 +21,7 @@ ht-degree: 35%
 
 Adobe Sign pour [!DNL NetSuite] offre une intégration complète des signatures électroniques avec [!DNL NetSuite]. Vous pouvez utiliser Adobe Sign pour [!DNL NetSuite] intégration pour envoyer des accords (contrats, devis, etc.) nécessitant des signatures électroniques directement aux destinataires depuis [!DNL NetSuite]. Vous pouvez créer et envoyer des accords Adobe Sign à partir de clients, de prospects, de devis et autres [!DNL NetSuite] des dossiers. Mises à jour Adobe Sign [!DNL NetSuite] avec le statut des accords et stocke les accords avec le [!DNL NetSuite] une fois qu&#39;ils sont entièrement exécutés. Vous pouvez afficher l’historique de tous les accords envoyés depuis [!DNL NetSuite] à partir du produit.
 
-Reportez-vous au [Adobe Sign pour [!DNL NetSuite] notes de mise à jour](https://experienceleague.adobe.com/docs/sign-integrations/using/netsuite/release-notes.html?lang=en) pour plus d’informations.
+Reportez-vous au [Notes de mise à jour d’Adobe Sign pour NetSuite](https://experienceleague.adobe.com/docs/sign-integrations/using/netsuite/release-notes.html?lang=en) pour plus d’informations.
 
 ## Installez l’offre groupée et configurez OAuth {#install}
 
@@ -66,7 +66,7 @@ Voir [Création d’un accord Adobe Sign](#createagreement) pour plus d&#39;info
 
 1. Si vous êtes déjà un compte client Adobe Sign, suivez les étapes pour  [Configuration d’OAuth après installation ou mise à niveau](#oauth).
 
-   Si vous ne disposez pas d’un compte Adobe Sign, vous pouvez [s’inscrire pour une version d’essai](https://esign.adobe.com/adobe-sign-[!DNL NetSuite]-trial-registration.html) pour tester le système. Suivez les étapes d’enregistrement en ligne pour activer votre compte Adobe Sign.
+   Si vous ne disposez pas d’un compte Adobe Sign, vous pouvez [s’inscrire pour une version d’essai](https://esign.adobe.com/adobe-sign-DNL NetSuite-trial-registration.html) pour tester le système. Suivez les étapes d’enregistrement en ligne pour activer votre compte Adobe Sign.
 
 ## Configuration d’OAuth après installation ou mise à niveau {#oauth}
 
@@ -123,7 +123,7 @@ La [!DNL NetSuite] L’administrateur qui configure OAuth doit également dispos
    >À :
    >
    >
-   >système.**sandbox.**[!DNL NetSuite].com/app/site/hosting/scriptlet.nl?script=745&amp;deploy=1&amp;web_access_point=https://echosign.com
+   >système.**sandbox.** netsuite.com/app/site/hosting/scriptlet.nl?script=745&amp;deploy=1&amp;web_access_point=https://echosign.com
 
 ## Mettre à jour l’offre groupée (utilisateurs existants)
 
@@ -355,7 +355,7 @@ Maximum [!DNL NetSuite] Les rôles doivent être autorisés à utiliser Adobe Si
 
    >[!NOTE]
    >
-   >Consultez la *[Configuration d’une liste d’autorisations pour un type d’enregistrement personnalisé](https://system.[!DNL NetSuite].com/app/help/helpcenter.nl?fid=section_N2879931.html)* dans le Centre d’aide NetSuite pour plus d’informations
+   >Pour plus d’informations, voir la rubrique *[Setting Up a Permissions List for a Custom Record Type](https://system.netsuite.com/app/help/helpcenter.nl?fid=section_N2879931.html)* dans le Centre d’aide NetSuite.
 
    1. Sélectionnez le rôle dans la liste *Rôle*.
    1. Définir *Niveau* à **[!UICONTROL Complet]**.
@@ -573,7 +573,7 @@ Une fois l’accord signé :
 
 ## Désinstallation de l’offre groupée
 
-Pour désinstaller l’offre groupée, suivez les étapes indiquées dans la boîte de dialogue [!DNL NetSuite] Aide. Consultez la *[Désinstallation d’une offre groupée](https://docs.oracle.com/cloud/latest/[!DNL NetSuite]cs_gs/NSBDL/NSBDL.pdf)* dans la boîte de dialogue [!DNL NetSuite] Centre d’aide pour plus d’informations.
+Pour désinstaller l’offre groupée, suivez les étapes indiquées dans la boîte de dialogue [!DNL NetSuite] Aide. Consultez la *[Désinstallation d’une offre groupée](https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_N3400972.html)* dans la boîte de dialogue [!DNL NetSuite] Centre d’aide pour plus d’informations.
 
 Lorsque vous désinstallez l’offre groupée, les accords non signés sont supprimés. Les accords signés et les fichiers de mot de PDF d’audit correspondants ne sont pas affectés.
 
