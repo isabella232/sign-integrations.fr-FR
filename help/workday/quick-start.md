@@ -11,10 +11,10 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 8b6fa8b4-e240-4ebe-ae2a-8807d75a6c69
-source-git-commit: 4d73ff36408283805386bd3266b683bc187d6031
+source-git-commit: 2cc0ea55ee7dca3682896c61c85eec29a555339c
 workflow-type: tm+mt
-source-wordcount: '1348'
-ht-degree: 26%
+source-wordcount: '1347'
+ht-degree: 25%
 
 ---
 
@@ -78,7 +78,7 @@ Dans le menu des actions associées d’un [!UICONTROL Étape de révision de do
 
 ## Notes sur les étapes du processus métier {#business-process-step-notes}
 
-[!UICONTROL Cadre des processus métier] est puissant ; cependant, vous devez vous assurer que :
+La [!UICONTROL Business Process Framework] est puissant ; cependant, vous devez vous assurer que :
 
 * Chaque processus métier doit comporter une étape d&#39;achèvement, qui se situe idéalement à la fin du processus métier.
 
@@ -114,7 +114,7 @@ Le document dynamique créé lors de l’étape « ba » est appelé [!UICONTR
 
 La lettre d’offre dynamique ci-dessous est créée dans le [!DNL Workday] éditeur de texte enrichi. Les éléments mis en évidence dans *gris* sont [!DNL Workday] objets fournis qui font référence à des données contextuelles.
 
-Les éléments entre {{accolades}} sont des [balises de texte Adobe](https://adobe.com/go/adobesign_text_tag_guide_fr).
+Éléments dans {{brackets}} sont [Balises de texte Adobe](https://adobe.com/go/adobesign_text_tag_guide_fr).
 
 ![Exemple de formulaire dynamique](images/script.png)
 
@@ -186,7 +186,7 @@ La [!DNL Workday] La communauté dispose de plusieurs articles intéressants sur
 
 En tant que partenaire de l’intégration, Adobe Sign doit être contacté lorsque l’intégration ne peut obtenir des signatures ou lorsque la notification de signatures en attente fait défaut.
 
-Les clients Adobe Sign doivent contacter leur gestionnaire de la réussite client pour obtenir de l’aide. Alternativement, [!UICONTROL Support technique Adobe] est accessible par téléphone : 1-866-318-4100, attendez la liste des produits, puis entrez : 4 puis 2 (lorsque vous y êtes invité).
+Les clients Adobe Sign doivent contacter leur [!UICONTROL Responsable du succès client] pour obtenir du support. Alternativement, [!UICONTROL Support technique Adobe] est accessible par téléphone : 1-866-318-4100, attendez la liste des produits, puis entrez : 4 puis 2 (lorsque vous y êtes invité).
 
 * [Ajout de balises de texte Adobe sur des documents](https://www.adobe.com/go/adobesign_text_tag_guide)
 
