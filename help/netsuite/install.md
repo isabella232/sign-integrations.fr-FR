@@ -8,7 +8,7 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 378cac01-87c9-4288-8839-482121d49402
-source-git-commit: 581b336b4a3610cfe3fd0d92f2a4eebe55b89b27
+source-git-commit: 568d001a05bd0e642036b4a73067689e987c02ba
 workflow-type: tm+mt
 source-wordcount: '4870'
 ht-degree: 36%
@@ -581,7 +581,7 @@ Ne désinstallez PAS l’offre groupée si vous devez conserver vos accords non 
 
 ## Dépannage
 
-### Déterminer la progression de la mise à jour  {#determineprogress}
+### Déterminer la progression de la mise à jour {#determineprogress}
 
 Si la mise à jour prend du temps, vous pouvez vérifier le sous-onglet Journal d’exécution du script Installation de l’offre groupée Adobe Sign pour déterminer la progression de votre mise à jour comme suit :
 
