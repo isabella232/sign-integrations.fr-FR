@@ -8,9 +8,9 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 378cac01-87c9-4288-8839-482121d49402
-source-git-commit: c54f848d7832e831dc10c8069ac572226f0b31e8
+source-git-commit: 581b336b4a3610cfe3fd0d92f2a4eebe55b89b27
 workflow-type: tm+mt
-source-wordcount: '4873'
+source-wordcount: '4870'
 ht-degree: 36%
 
 ---
@@ -66,7 +66,7 @@ Voir [Création d’un accord Adobe Sign](#createagreement) pour plus d&#39;info
 
 1. Si vous êtes déjà un compte client Adobe Sign, suivez les étapes pour  [Configuration d’OAuth après installation ou mise à niveau](#oauth).
 
-   Si vous ne disposez pas d’un compte Adobe Sign, vous pouvez [s’inscrire pour une version d’essai](https://esign.adobe.com/adobe-sign-DNL NetSuite-trial-registration.html) pour tester le système. Suivez les étapes d’enregistrement en ligne pour activer votre compte Adobe Sign.
+   Si vous ne disposez pas d’un compte Adobe Sign, vous pouvez vous [inscrire pour une version d’essai de compte](https://esign.adobe.com/fr/adobe-sign-netsuite-trial-registration.html) d’entreprise afin de tester le système. Suivez les étapes d’enregistrement en ligne pour activer votre compte Adobe Sign.
 
 ## Configuration d’OAuth après installation ou mise à niveau {#oauth}
 
@@ -111,19 +111,19 @@ La [!DNL NetSuite] L’administrateur qui configure OAuth doit également dispos
    >Lors de la configuration d’OAuth dans votre compte Sandbox, vous pouvez rencontrer l’erreur &quot;Impossible de déterminer l’ID de composition client&quot; une fois l’autorisation terminée.
    >
    >
-   >Pour continuer, vous devez modifier la partie du domaine de compte de l’URL (système).[!DNL NetSuite].com) dans votre navigateur pour renvoyer vers le [!DNL NetSuite] Sandbox comme suit :
+   >Pour continuer, vous devez modifier la partie du domaine du compte de l’URL (system.netsuite.com) dans votre navigateur pour qu’elle renvoie à l’élément [!DNL NetSuite] Sandbox comme suit :
    >
    >
    >Changer:
    >
    >
-   >system.[!DNL NetSuite].com/app/site/hosting/scriptlet.nl?script=745&amp;deploy=1&amp;web_access_point=https://echosign.com
+   >system.netsuite.com/app/site/hosting/scriptlet.nl?script=745&amp;deploy=1&amp;web_access_point=https://echosign.com
    >
    >
    >À :
    >
    >
-   >système.**sandbox.** netsuite.com/app/site/hosting/scriptlet.nl?script=745&amp;deploy=1&amp;web_access_point=https://echosign.com
+   >system.**sandbox.** netsuite.com/app/site/hosting/scriptlet.nl?script=745&amp;deploy=1&amp;web_access_point=https://echosign.com
 
 ## Mettre à jour l’offre groupée (utilisateurs existants)
 
@@ -581,7 +581,7 @@ Ne désinstallez PAS l’offre groupée si vous devez conserver vos accords non 
 
 ## Dépannage
 
-### Déterminer la progression de la mise à jour
+### Déterminer la progression de la mise à jour  {#determineprogress}
 
 Si la mise à jour prend du temps, vous pouvez vérifier le sous-onglet Journal d’exécution du script Installation de l’offre groupée Adobe Sign pour déterminer la progression de votre mise à jour comme suit :
 
