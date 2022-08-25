@@ -10,7 +10,7 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 08d55f79fd4fff8f13dc23b9d155e501ca038be1
+source-git-commit: c09759f2455b476fd1093d845cee4f5c3c3601d7
 workflow-type: tm+mt
 source-wordcount: '4169'
 ht-degree: 3%
@@ -289,13 +289,13 @@ Disable Vault Overlays (disable_vault_overlays__v) est un champ partagé existan
 
 Le nouveau type de rendu appelé *Adobe Sign Rendition (adobe_sign_rendition__c)* est utilisé par l’intégration Vault pour télécharger des documents signés par PDF vers Adobe Acrobat Sign. Vous devez déclarer le rendu Adobe Sign pour chaque type de document éligible à la signature Adobe Acrobat.
 
-Vous devez déclarer le format associé d’origine pour chaque type de document éligible à la signature Adobe Acrobat.
-
 ![Image de types de rendu](images/rendition-type.png)
 
 ![Image](images/edit-details-clinical.png)
 
 Le nouveau type de rendu appelé *Rendu original* (original_rendition__c) est utilisé par l’intégration Vault comme nom du rendu qui doit être utilisé pour stocker le rendu visible d’origine si le document signé est importé en tant que rendu visible.
+
+Vous devez déclarer le format associé d’origine pour chaque type de document éligible à la signature Adobe Acrobat.
 
 ![Image](images/original-rendition.png)
 
