@@ -10,9 +10,9 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 00db62c894df93abac31bf8196730382d54e8fa0
+source-git-commit: 76f1be575130e89d96dfe45f7343382b3a519903
 workflow-type: tm+mt
-source-wordcount: '4176'
+source-wordcount: '4171'
 ht-degree: 3%
 
 ---
@@ -320,7 +320,7 @@ Lorsqu’un utilisateur opte pour un accord de signature numérique avec les par
 
 Pour afficher le contenu du document avec la signature numérique et le journal d’audit, ne sélectionnez pas &quot;Joindre le rapport d’audit au rendu signé&quot; avec &quot;Afficher le rendu Acrobat Sign&quot; dans l’interface utilisateur d’administration pour la signature numérique.
 
-Vous pouvez télécharger ou afficher la piste d’audit d’Adobe en tant que rendu distinct à partir du rendu signé à l’aide de la fonction &quot;Rendu de piste d’audit d’Adobe&quot;.
+Vous pouvez utiliser le rendu de piste d’audit d’Adobe pour télécharger ou afficher la piste d’audit d’Adobe en tant que rendu distinct.
 
 ![Image](images/audit-trail-rendition-setup-4.png)
 
