@@ -10,9 +10,9 @@ solution: Acrobat Sign
 role: User, Developer
 topic: Integrations
 exl-id: 5d61a428-06e4-413b-868a-da296532c964
-source-git-commit: 163c74a2e03aeaa0627d972b791166d4ea4e66a6
+source-git-commit: 08d55f79fd4fff8f13dc23b9d155e501ca038be1
 workflow-type: tm+mt
-source-wordcount: '3933'
+source-wordcount: '4169'
 ht-degree: 3%
 
 ---
@@ -289,13 +289,40 @@ Disable Vault Overlays (disable_vault_overlays__v) est un champ partagé existan
 
 Le nouveau type de rendu appelé *Adobe Sign Rendition (adobe_sign_rendition__c)* est utilisé par l’intégration Vault pour télécharger des documents signés par PDF vers Adobe Acrobat Sign. Vous devez déclarer le rendu Adobe Sign pour chaque type de document éligible à la signature Adobe Acrobat.
 
+Vous devez déclarer le format associé d’origine pour chaque type de document éligible à la signature Adobe Acrobat.
+
 ![Image de types de rendu](images/rendition-type.png)
 
 ![Image](images/edit-details-clinical.png)
 
-Le nouveau type de rendu appelé *Rendu d’origine (original_rendition__c)* est utilisé par l’intégration Vault comme nom du rendu qui doit être utilisé pour stocker le rendu visible d’origine si le document signé est importé en tant que rendu visible.
+Le nouveau type de rendu appelé *Rendu original* (original_rendition__c) est utilisé par l’intégration Vault comme nom du rendu qui doit être utilisé pour stocker le rendu visible d’origine si le document signé est importé en tant que rendu visible.
 
 ![Image](images/original-rendition.png)
+
+Le coffre peut éventuellement avoir un nouveau type de rendu Adobe Audit Trail Rendition (adobe_audit_trail_rendition__c), qui est utilisé par l&#39;intégration du coffre pour stocker le rapport de piste d&#39;audit de l&#39;Adobe.
+
+Suivez les étapes ci-dessous pour configurer le rendu de piste d’audit d’Adobe :
+
+1. Accéder à **Type de rendu** > **Créer un type de rendu**.
+Créez le nouveau type de rendu en tant que rendu de piste d’audit (adobe_audit_trail_rendition__c).
+
+   ![Image](images/audit-trail-rendition-setup-1.png)
+
+1. Pour afficher et télécharger le rendu de piste d’audit d’Adobe pour le document, déclarez *Adobe du rendu de piste d&#39;audit* pour chaque type de document éligible pour la signature Adobe Acrobat.
+
+   ![Image](images/audit-trail-rendition-setup-2.png)
+
+**Remarque**: Vous pouvez choisir de joindre le rapport d’audit au rendu signé en activant **[!UICONTROL Joindre le rapport d’audit au rendu signé]** et affichez également le rendu en activant ****[!UICONTROL Affichage du rendu Acrobat Sign]**** dans les paramètres de l’interface utilisateur Admin.
+
+![Image](images/audit-trail-rendition-setup-3.png)
+
+Lorsqu’un utilisateur opte pour un accord de signature numérique avec les paramètres ci-dessus, un message (comme indiqué ci-dessous) s’affiche indiquant que Adobe Acrobat Sign utilise le Portfolio par PDF pour combiner le PDF signé numériquement et les rapports de piste d’audit.
+
+Pour afficher le contenu du document avec la signature numérique et le journal d’audit, ne sélectionnez pas &quot;Joindre le rapport d’audit au rendu signé&quot; avec &quot;Afficher le rendu Acrobat Sign&quot; dans l’interface utilisateur d’administration pour la signature numérique.
+
+Vous pouvez télécharger ou afficher la piste d’audit de l’Adobe en tant que rendu distinct du rendu signé.
+
+![Image](images/audit-trail-rendition-setup-4.png)
 
 ### Étape 9. Actions Web Update {#web-actions}
 
