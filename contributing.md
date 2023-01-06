@@ -1,60 +1,47 @@
 ---
-source-git-commit: 8cb918e2d0d438d39a9f14f719c28b5981ff2656
+source-git-commit: 85743a2442808fa200a39d2e9bc27d4853dd2360
 workflow-type: tm+mt
-source-wordcount: '296'
+source-wordcount: '294'
 ht-degree: 0%
 
 ---
-# Contributeur
+# Contribution
 
 Merci d&#39;avoir choisi de contribuer !
 
 Voici un ensemble de lignes directrices à suivre pour contribuer à ce projet.
 
-## Code de conduite
+## Code De Conduite
 
-Ce projet respecte le code de conduite [de l&#39;Adobe ](code-of-conduct.md). En participant,
-on s&#39;attend à ce que vous respectiez ce code. Veuillez signaler un comportement inacceptable à
+Ce projet respecte l&#39;Adobe [code de conduite](code-of-conduct.md). En participant, vous devez respecter ce code. Signalez un comportement inacceptable à
 [Grp-opensourceoffice@adobe.com](mailto:Grp-opensourceoffice@adobe.com).
 
 ## Documentation du guide du contributeur
 
-Reportez-vous au [Guide du contributeur](https://docs.adobe.com/content/help/en/contributor/contributor-guide/introduction.html).
+Consultez la [Guide du contributeur](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html).
 
-## Une Question ?
+## Vous Avez Une Question ?
 
-Commencez par déposer un numéro. Les comités existants sur ce projet travaillent à atteindre
-consensus autour de l’orientation du projet et des solutions à proposer dans les fils de discussion
-(le cas échéant).
+Commencez par signaler un problème. Les participants existants à ce projet s’efforcent de parvenir à un consensus sur l’orientation du projet et d’émettre des solutions dans les fils de discussion (le cas échéant).
 
 ## Contrat de licence du contributeur
 
-Toutes les contributions de tiers à ce projet doivent être accompagnées d’un contributeur signé.
-contrat de licence. Cela donne à l’Adobe l’autorisation de redistribuer vos contributions
-dans le cadre du projet. [Signez notre CLA](http://opensource.adobe.com/cla.html). Vous
-Il suffit de soumettre un CLA Adobe une seule fois. Par conséquent, si vous en avez déjà soumis un précédemment,
-tu es bon !
+Toutes les contributions tierces à ce projet doivent être accompagnées d’un contrat de licence du contributeur signé. Cela donne à l’Adobe la permission de redistribuer vos contributions dans le cadre du projet. [Signez votre contrat CLA](http://opensource.adobe.com/cla.html). Vous n&#39;avez qu&#39;une seule fois à soumettre un CLA Adobe, donc si vous en avez déjà soumis un précédemment, vous êtes prêt !
 
 ## Révisions de code
 
-Toutes les demandes doivent être présentées sous forme de demandes d&#39;appel et doivent être examinées.
-par les comités de projet. Lire la [documentation de demande d&#39;extraction de GitHub](https://help.github.com/articles/about-pull-requests/)
-pour plus d’informations sur l’envoi de demandes d’extraction.
+Toutes les soumissions devraient prendre la forme de demandes Pull et doivent être examinées par les participants au projet. Lire [Documentation de demande Pull GitHub](https://help.github.com/articles/about-pull-requests/)
+pour plus d&#39;informations sur l&#39;envoi de demandes pull.
 
 <!--
 Lastly, please follow the [pull request template](PULL_REQUEST_TEMPLATE.md) when
 submitting a pull request!
 -->
 
-## De Contributeur À Committer
+## Du Contributeur Au Commentateur
 
-Nous aimons les contributions de notre communauté ! Si vous souhaitez aller au-delà du contributeur
-et devenir un comité avec un accès en écriture complet et un droit de regard dans le projet, vous devez
-être invité au projet. Les comités existants utilisent une nomination interne
-processus qui doit atteindre un consensus paresseux (le silence est l&#39;approbation) avant les invitations
-sont émis. Si vous estimez que vous êtes qualifié et que vous souhaitez vous impliquer davantage,
-n&#39;hésitez pas à communiquer avec les comités existants pour discuter de cette question.
+Nous aimons les contributions de notre communauté ! Si vous souhaitez aller au-delà du rôle de contributeur et devenir un participant avec un accès en écriture complet et un droit de regard sur le projet, vous devez être invité au projet. Les participants existants utilisent un processus de nomination interne qui doit atteindre un consensus paresseux (le silence est l&#39;approbation) avant que les invitations soient émises. Si vous estimez que vous êtes qualifié et que vous souhaitez vous impliquer davantage, n’hésitez pas à contacter les participants existants pour en discuter.
 
 ## Problèmes de sécurité
 
-Les problèmes de sécurité ne doivent pas être signalés sur ce dispositif de suivi des problèmes. Au lieu de cela, [déposez un problème à nos experts en sécurité](https://helpx.adobe.com/security/alertus.html)
+Les problèmes de sécurité ne doivent pas être signalés dans ce dispositif de suivi des problèmes. Au lieu de cela, [signaler un problème à nos experts de la sécurité](https://helpx.adobe.com/security/alertus.html)
